@@ -1,6 +1,7 @@
 package it.uniroma3.siw.spring.service;
 
 import java.util.List;
+
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -38,7 +39,7 @@ public class PrenotazioneService {
 
 	@Transactional
 	public boolean alreadyExists(Prenotazione prenotazione) {
-		List<Prenotazione> prenotazioni = this.prenotazioneRepository.findById(prenotazione.getId());
+		List<Prenotazione> prenotazioni = this.prenotazioneRepository.findByDataAndUser(prenotazione.getDataPrenotazione(), prenotazione.getCliente());
 		if (prenotazioni.size() > 0)
 			return true;
 		else 
@@ -46,7 +47,7 @@ public class PrenotazioneService {
 	}
 	
 	@Transactional
-	public void deleteInsegnanteByID(Long id) {
+	public void deletePrenotazioneByID(Long id) {
 		prenotazioneRepository.deleteById(id);
 	}
 }

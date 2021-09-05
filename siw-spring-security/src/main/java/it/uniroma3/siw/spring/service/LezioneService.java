@@ -38,7 +38,7 @@ public class LezioneService {
 
 	@Transactional
 	public boolean alreadyExists(Lezione lezione) {
-		Optional<Lezione> lezioni = this.lezioneRepository.findById(lezione.getId());
+		List<Lezione> lezioni = this.lezioneRepository.findByDataAndCorso(lezione.getData(), lezione.getCorso());
 		if (lezioni.size() > 0)
 			return true;
 		else 
