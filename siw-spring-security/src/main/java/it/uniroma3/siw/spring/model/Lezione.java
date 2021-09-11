@@ -23,6 +23,9 @@ public class Lezione {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@Column
+	private String nome;
+	
 	@Column(nullable = false)
 	private int durata;  // int o string?
 	
