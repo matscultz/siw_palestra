@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/baseadmin.html :: headerfiles(title=#{header.lezioni})"> </head>
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+	<div>
+    	<h4 class="t1" >Lista di lezioni</h4>
+		<ul>
+			<li class="t5" th:each="lezione : ${lezioni}">
+				<a href="lezione.html" 
+				   th:href="@{'/lezione' + '/' + ${lezione.id}}" 
+				   th:date="|${insegnante.corso}|"></a>
+			</li>
+		</ul>
+	</div>
+	<footer th:replace="fragments/base.html :: fondo"></footer>
+</body>
+</html>

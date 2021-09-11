@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/baseadmin.html :: headerfiles(title=#{pageTitle.corso})"> </head>
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+    <div>
+    	<h4  class="t1"></h4>
+    	
+    	<div class="t2" th:if="${corso}" th:object="${corso}">
+			<span th:text="*{nome}">qui-va-nome</span>
+			<span th:text="*{descrizione}">qui-va-cognome</span>
+   		</div>
+   		<ul>
+               <li th:each="insegnante : ${corso.insegnanti}">
+                <a href="insegnante.html" 
+                   th:href="@{'/insegnante' + '/' + ${insegnante.id}}"
+                   th:text="${insegnante.nome}"
+                   th:text="${insegnante.cognome}"> </a>
+                   <div><br><br></div>
+               </li>
+        </ul>
+         <ul>
+               <li th:each="lezione : ${corso.lezioni}">
+                <a href="lezione.html" 
+                   th:href="@{'/lezione' + '/' + ${lezione.id}}"
+                  // ?? th:text="${corso.nome}"> </a>
+                   <div><br><br></div>
+               </li>
+        </ul>
+    	<div th:unless="${corso}">Non esiste</div>
+    	<div th:if="${#authorization.expression('isAuthenticated()')}"> 
+        <div>
+            <form action="#" th:object="${corso}" th:action="@{/admin/corso/{id}(id=${corso.id})}">
+            <input type="hidden" name="_method" value="delete">
+              <button type="submit" id="submitButton">Aggiorna i dati</button>
+            </form>
+             </div> 
+            <br>
+             <div>
+            <form action="#" th:object="${corso}" th:action="@{/admin/deleteCorso/{id}(id=${corso.id})}" th:method="post" >
+            <input type="hidden" name="_method" value="delete">
+              <button type="submit" id="submitButton">Cancella</button>
+            </form>
+             </div>
+             </div>
+             <div th:unless="${#authorization.expression('isAuthenticated()')}"> </div>
+     </div>
+    <footer th:replace="fragments/base.html :: fondo"></footer>
+</body>
+</html>

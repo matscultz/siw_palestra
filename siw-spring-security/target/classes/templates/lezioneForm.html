@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/baseadmin.html :: headerfiles(title=#{header.lezioni})"> </head>
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+	<div class="container">
+			<div class="myform">
+	<div>
+		<h4 class="t1">Inserisci i dati di un lezione</h4>
+	</div>
+	<form th:action="@{/admin/lezione}" method="POST" th:object="${lezione}">
+		<div th:if="${#fields.hasGlobalErrors()}">
+  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+		</div>		
+		<div>
+			<div>
+				<span>Nome:</span>
+				<span><input type="text" th:field="*{nome}" /></span>
+				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+			</div>		
+			<div>
+				<span>Cognome:</span>
+				<span><input type="text" th:field="*{cognome}" /></span>
+				<span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span>
+			</div>
+			<div>
+				<span>Data di nascita:</span>
+				<span><input type="date" th:field="*{dataNascita}" /></span>
+				<span th:if="${#fields.hasErrors('dataNascita')}" th:errors="*{dataNascita}"></span>
+			</div>
+			<div>
+				<span>Luogo di nascita:</span>
+				<span><input type="text" th:field="*{luogoNascita}" /></span>
+				<span th:if="${#fields.hasErrors('luogoNascita')}" th:errors="*{luogoNascita}"></span>
+			</div>
+			<div>
+				<span>Nazionalit�:</span>
+				<span><input type="text" th:field="*{nazionalita}" /></span>
+				<span th:if="${#fields.hasErrors('nazionalita')}" th:errors="*{nazionalita}"></span>
+			</div>
+			<div>
+				<span>Data di morte:</span>
+				<span><input type="date" th:field="*{dataMorte}" /></span>
+				<span th:if="${#fields.hasErrors('dataMorte')}" th:errors="*{dataMorte}"></span>
+			</div>
+			<div>
+				<span>Luogo di morte:</span>
+				<span><input type="text" th:field="*{luogoMorte}" /></span>
+				<span th:if="${#fields.hasErrors('luogoMorte')}" th:errors="*{luogoMorte}"></span>
+			</div>
+			<div>
+				<span><button type="submit">Invio</button></span>
+			</div>
+		</div>
+	</form>
+	</div>
+	</div>
+	<footer th:replace="fragments/base.html :: fondo"></footer>
+</body>
+</html>

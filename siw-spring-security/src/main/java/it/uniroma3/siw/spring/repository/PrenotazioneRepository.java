@@ -10,6 +10,6 @@ import it.uniroma3.siw.spring.model.User;
 
 public interface PrenotazioneRepository extends CrudRepository<Prenotazione, Long> {
 
-	public List<Prenotazione> findByDataAndUser(LocalDate data, User cliente);
+	public List<Prenotazione> findByNome(String nome);
 	
 }

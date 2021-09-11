@@ -21,6 +21,9 @@ public class Prenotazione {
 	private Long id;
 	
 	@Column
+	private String nome;
+	
+	@Column
 	private LocalDate data;
 	
 	@ManyToOne
