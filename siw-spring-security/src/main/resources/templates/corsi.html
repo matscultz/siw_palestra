@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/baseadmin.html :: headerfiles(title=#{header.corsi})"> </head>
+<head th:replace="fragments/base.html :: headerfiles(title=#{header.corsi})"> </head>
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	<div>
@@ -13,6 +13,5 @@
 			</li>
 		</ul>
 	</div>
-	<footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
 </html>
