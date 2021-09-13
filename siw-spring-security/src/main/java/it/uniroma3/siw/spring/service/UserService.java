@@ -5,7 +5,6 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import it.uniroma3.siw.spring.model.Insegnante;
 import it.uniroma3.siw.spring.model.User;
 import it.uniroma3.siw.spring.repository.UserRepository;
 
@@ -50,7 +49,7 @@ public class UserService {
      * @return a List with all the retrieved Users
      */
     @Transactional
-    public List<User> getAllUsers() {
+    public List<User> tutti() {
         List<User> result = new ArrayList<>();
         Iterable<User> iterable = this.userRepository.findAll();
         for(User user : iterable)
@@ -58,17 +57,9 @@ public class UserService {
         return result;
     }
     
-	@Transactional
-	public boolean alreadyExists(User user) {
-		List<User> users = this.userRepository.findByNomeAndCognome(user.getNome(), user.getCognome());
-		if (users.size() > 0)
-			return true;
-		else 
-			return false;
+    
+    @Transactional
+	public User inserisci(User user) {
+		return userRepository.save(user);
 	}
-	
-	@Transactional
-	public void deleteInsegnanteByID(Long id) {
-		userRepository.deleteById(id);
-    }
 }

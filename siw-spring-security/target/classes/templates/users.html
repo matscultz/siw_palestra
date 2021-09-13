@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/base.html :: headerfiles(title=#{header.users})"> </head>
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+	<div>
+    	<h4 class="t1" >Lista di utenti</h4>
+		<ul>
+			<li class="t5" th:each="user : ${users}">
+				<a href="user.html" 
+				   th:href="@{'/user' + '/' + ${user.id}}" 
+				   th:text="|${user.nome} ${user.cognome}|">Paolo Rossi</a>
+		
+			</li>
+		</ul>
+	</div>
+	<footer th:replace="fragments/base.html :: fondo"></footer>
+</body>
+</html>
