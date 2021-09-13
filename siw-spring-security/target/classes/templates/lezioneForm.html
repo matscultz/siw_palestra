@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/baseadmin.html :: headerfiles(title=#{header.lezioni})"> </head>
+<head th:replace="fragments/base.html :: headerfiles(title=#{header.lezioni})"> </head>
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	<div class="container">
@@ -19,34 +19,14 @@
 				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
 			</div>		
 			<div>
-				<span>Cognome:</span>
-				<span><input type="text" th:field="*{cognome}" /></span>
-				<span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span>
+				<span>Durata:</span>
+				<span><input type="text" th:field="*{durata}" /></span>
+				<span th:if="${#fields.hasErrors('durata')}" th:errors="*{durata}"></span>
 			</div>
 			<div>
-				<span>Data di nascita:</span>
-				<span><input type="date" th:field="*{dataNascita}" /></span>
-				<span th:if="${#fields.hasErrors('dataNascita')}" th:errors="*{dataNascita}"></span>
-			</div>
-			<div>
-				<span>Luogo di nascita:</span>
-				<span><input type="text" th:field="*{luogoNascita}" /></span>
-				<span th:if="${#fields.hasErrors('luogoNascita')}" th:errors="*{luogoNascita}"></span>
-			</div>
-			<div>
-				<span>Nazionalit�:</span>
-				<span><input type="text" th:field="*{nazionalita}" /></span>
-				<span th:if="${#fields.hasErrors('nazionalita')}" th:errors="*{nazionalita}"></span>
-			</div>
-			<div>
-				<span>Data di morte:</span>
-				<span><input type="date" th:field="*{dataMorte}" /></span>
-				<span th:if="${#fields.hasErrors('dataMorte')}" th:errors="*{dataMorte}"></span>
-			</div>
-			<div>
-				<span>Luogo di morte:</span>
-				<span><input type="text" th:field="*{luogoMorte}" /></span>
-				<span th:if="${#fields.hasErrors('luogoMorte')}" th:errors="*{luogoMorte}"></span>
+				<span>Giorno lezione:</span>
+				<span><input type="date" th:field="*{data}" /></span>
+				<span th:if="${#fields.hasErrors('data')}" th:errors="*{data}"></span>
 			</div>
 			<div>
 				<span><button type="submit">Invio</button></span>
@@ -55,6 +35,5 @@
 	</form>
 	</div>
 	</div>
-	<footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
 </html>

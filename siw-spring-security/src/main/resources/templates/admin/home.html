@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/base.html :: headerfiles(title='SIW')"> </head>
+	<head th:replace="fragments/base.html :: headerfiles(title='ADMIN')"> </head>
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
     <div>
     	<h4 th:text="#{header.menuAdmin}">Menu</h4>
 		<div>
-			<a th:href="@{/prodotto}">Elenco prodotti</a>
+			<a th:href="@{/corso}">Elenco corsi</a>
    		</div>
    		<div>
-			<a th:href="@{/admin/prodotto}">Inserisci dati prodotto</a>
+			<a th:href="@{/admin/corso}">Inserisci dati corso</a>
+   		</div>
+   		<div>
+			<a th:href="@{/admin/lezione}">Inserisci dati lezione</a>
    		</div>
    		<div>
 			<a th:href="@{/logout}">Logout</a>

@@ -10,7 +10,7 @@
 			<span th:text="*{nome}">qui-va-nome</span>
 			<span th:text="*{descrizione}">qui-va-cognome</span>
    		</div>
-   		<ul>
+   		<!-- <ul>
                <li th:each="insegnante : ${corso.insegnanti}">
                 <a href="insegnante.html" 
                    th:href="@{'/insegnante' + '/' + ${insegnante.id}}"
@@ -26,7 +26,7 @@
                   // ?? th:text="${corso.nome}"> </a>
                    <div><br><br></div>
                </li>
-        </ul>
+        </ul> -->
     	<div th:unless="${corso}">Non esiste</div>
     	<div th:if="${#authorization.expression('isAuthenticated()')}"> 
         <div>
@@ -45,6 +45,5 @@
              </div>
              <div th:unless="${#authorization.expression('isAuthenticated()')}"> </div>
      </div>
-    <footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
 </html>
