@@ -16,6 +16,8 @@ public class InsegnanteService {
 	
 	@Autowired
 	private InsegnanteRepository insegnanteRepository; 
+	@Autowired
+	private InsegnanteService insegnanteService; 
 	
 	@Transactional
 	public Insegnante inserisci(Insegnante insegnante) {
@@ -49,4 +51,10 @@ public class InsegnanteService {
 	public void deleteInsegnanteByID(Long id) {
 		insegnanteRepository.deleteById(id);
 	}
+
+public InsegnanteService getInsegnanteService() {
+		
+		return this.insegnanteService;
+	}
+	
 }

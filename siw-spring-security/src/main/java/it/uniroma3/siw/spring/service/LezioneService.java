@@ -16,6 +16,8 @@ public class LezioneService {
 	
 	@Autowired
 	private LezioneRepository lezioneRepository; 
+	@Autowired
+	private LezioneService lezioneService; 
 	
 	@Transactional
 	public Lezione inserisci(Lezione lezione) {
@@ -48,5 +50,10 @@ public class LezioneService {
 	@Transactional
 	public void deleteLezioneByID(Long id) {
 		lezioneRepository.deleteById(id);
+	}
+
+	public LezioneService getLezioneService() {
+		
+		return this.lezioneService;
 	}
 }

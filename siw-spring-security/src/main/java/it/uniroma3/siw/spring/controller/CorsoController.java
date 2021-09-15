@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import it.uniroma3.siw.spring.controller.validator.CorsoValidator;
 import it.uniroma3.siw.spring.model.Corso;
 import it.uniroma3.siw.spring.service.CorsoService;
+import it.uniroma3.siw.spring.service.InsegnanteService;
+import it.uniroma3.siw.spring.service.LezioneService;
 
 @Controller
 public class CorsoController {
@@ -23,7 +25,12 @@ public class CorsoController {
 	
     @Autowired
     private CorsoValidator corsoValidator;
-        
+   
+    @Autowired
+	private InsegnanteService insegnanteService;
+    @Autowired
+   	private LezioneService lezioneService;     
+    
     @RequestMapping(value="/admin/corso", method = RequestMethod.GET)
     public String addCorso(Model model) {
     	model.addAttribute("corso", new Corso());
@@ -41,6 +48,7 @@ public class CorsoController {
     		model.addAttribute("corsi", this.corsoService.tutti());
     		return "corsi";
     }
+
     
     @RequestMapping(value = "/admin/corso", method = RequestMethod.POST)
     public String addCorso(@ModelAttribute("corso") Corso corso, 
@@ -58,6 +66,17 @@ public class CorsoController {
     	this.corsoService.deleteCorsoByID(id);
     	return "corsi";
     }
+    
+    @RequestMapping(value="/admin/modCorso/{id}",method= RequestMethod.GET)
+    public String updateCorso(@PathVariable("id")Long id, Model model) {
+    
+    	model.addAttribute("corso", this.corsoService.corsoPerId(id));
+    	model.addAttribute("insegnanti",this.insegnanteService.getInsegnanteService().tutti());
+    	model.addAttribute("lezioni",this.lezioneService.getLezioneService().tutti());
+
+        return "corsoFormMod.html";
+    }
+
     
     
 }

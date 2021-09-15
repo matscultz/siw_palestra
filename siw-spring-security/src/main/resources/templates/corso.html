@@ -30,7 +30,7 @@
     	<div th:unless="${corso}">Non esiste</div>
     	<div th:if="${#authorization.expression('isAuthenticated()')}"> 
         <div>
-            <form action="#" th:object="${corso}" th:action="@{/admin/corso/{id}(id=${corso.id})}" th:method="post">
+            <form action="#" th:object="${corso}" th:action="@{/admin/modCorso/{id}(id=${corso.id})}" th:method="post">
             <input type="hidden" name="_method" value="update">
               <button type="submit" id="submitButton">Aggiorna i dati</button>
             </form>

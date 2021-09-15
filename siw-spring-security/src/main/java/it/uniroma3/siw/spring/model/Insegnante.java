@@ -18,7 +18,7 @@ public class Insegnante {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long matricola;
+	private Long id;
 	
 	@Column(nullable = false)
 	private String nome;
