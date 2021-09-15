@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title=#{header.corsi})"> </head>
+<head
+	th:replace="fragments/base.html :: headerfiles(title=#{header.corsi})">
+</head>
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	<div class="container">
-			<div class="myform">
-	<div>
-		<h4 class="t1">Inserisci i dati di un corso</h4>
-	</div>
-	<form th:action="@{/admin/corso}" method="POST" th:object="${corso}">
-		<div th:if="${#fields.hasGlobalErrors()}">
-  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
-		</div>		
-		<div>
+		<div class="myform">
 			<div>
-				<span>Nome:</span>
-				<span><input type="text" th:field="*{nome}" /></span>
-				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
-			</div>		
-			<div>
-				<span>Descrizione:</span>
-				<span><input type="text" th:field="*{descrizione}" /></span>
-				<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
+				<h4 class="t1">Inserisci i dati di un corso</h4>
 			</div>
-			<div>
-				<span><button type="submit">Invio</button></span>
-			</div>
+			<form th:action="@{/admin/corso}" method="POST" th:object="${corso}">
+				<div th:if="${#fields.hasGlobalErrors()}">
+					<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+				</div>
+				<div>
+					<div>
+						<span>Nome:</span> <span><input type="text"
+							th:field="*{nome}" /></span> <span th:if="${#fields.hasErrors('nome')}"
+							th:errors="*{nome}"></span>
+					</div>
+					<div>
+						<span>Descrizione:</span> <span><input type="text"
+							th:field="*{descrizione}" /></span> <span
+							th:if="${#fields.hasErrors('descrizione')}"
+							th:errors="*{descrizione}"></span>
+					</div>
+
+					<div>
+						<span><button type="submit">Invio</button></span>
+					</div>
+				</div>
+			</form>
 		</div>
-	</form>
-	</div>
 	</div>
 </body>
 </html>

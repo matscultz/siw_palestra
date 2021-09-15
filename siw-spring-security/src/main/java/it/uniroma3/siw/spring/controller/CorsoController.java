@@ -53,4 +53,11 @@ public class CorsoController {
         }
         return "corsoForm";
     }
+    @RequestMapping(value = "/admin/deleteCorso/{id}", method = RequestMethod.POST)
+    public String deleteCorso(@PathVariable("id") Long id) {
+    	this.corsoService.deleteCorsoByID(id);
+    	return "corsi";
+    }
+    
+    
 }

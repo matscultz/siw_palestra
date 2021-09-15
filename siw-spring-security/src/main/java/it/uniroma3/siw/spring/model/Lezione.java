@@ -1,6 +1,7 @@
 package it.uniroma3.siw.spring.model;
 
 import java.time.LocalDate;
+
 import java.time.LocalTime;
 
 import javax.persistence.Column;
@@ -30,10 +31,13 @@ public class Lezione {
 	private int durata;  // int o string?
 	
 	@Column(nullable = false)
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private LocalDate data;
 	
+	
+	
 	@Column(nullable = false)
+	@DateTimeFormat(pattern = "HH:mm:ss")
 	private LocalTime orario;
 	
 	@ManyToOne

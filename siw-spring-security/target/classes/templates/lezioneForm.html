@@ -1,39 +1,57 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title=#{header.lezioni})"> </head>
+<head
+	th:replace="fragments/base.html :: headerfiles(title=#{header.lezioni})">
+</head>
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	<div class="container">
-			<div class="myform">
-	<div>
-		<h4 class="t1">Inserisci i dati di un lezione</h4>
-	</div>
-	<form th:action="@{/admin/lezione}" method="POST" th:object="${lezione}">
-		<div th:if="${#fields.hasGlobalErrors()}">
-  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
-		</div>		
-		<div>
+		<div class="myform">
 			<div>
-				<span>Nome:</span>
-				<span><input type="text" th:field="*{nome}" /></span>
-				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
-			</div>		
-			<div>
-				<span>Durata:</span>
-				<span><input type="text" th:field="*{durata}" /></span>
-				<span th:if="${#fields.hasErrors('durata')}" th:errors="*{durata}"></span>
+				<h4 class="t1">Inserisci i dati di un lezione</h4>
 			</div>
-			<div>
-				<span>Giorno lezione:</span>
-				<span><input type="date" th:field="*{data}" /></span>
-				<span th:if="${#fields.hasErrors('data')}" th:errors="*{data}"></span>
-			</div>
-			<div>
-				<span><button type="submit">Invio</button></span>
-			</div>
+			<form th:action="@{/admin/lezione}" method="POST"
+				th:object="${lezione}">
+				<div th:if="${#fields.hasGlobalErrors()}">
+					<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+				</div>
+				<div>
+					<div>
+						<span>Nome:</span> <span><input type="text"
+							th:field="*{nome}" /></span> <span th:if="${#fields.hasErrors('nome')}"
+							th:errors="*{nome}"></span>
+					</div>
+
+					<div>
+						<span>Durata:</span> <span><input type="number"
+							th:field="*{durata}" /></span> <span
+							th:if="${#fields.hasErrors('durata')}" th:errors="*{durata}"></span>
+					</div>
+					<div>
+						<span>Orario:</span> <span><input type="time"
+							th:field="*{orario}" /></span> <span th:if="${#fields.hasErrors('orario')}"
+							th:errors="*{orario}"></span>
+					</div>
+					<div>
+						<span>Giorno lezione:</span> <span><input type="date"
+							th:field="*{data}" /></span> <span th:if="${#fields.hasErrors('data')}"
+							th:errors="*{data}"></span>
+					</div>
+					<!-- 	<div>
+						<label for="corsi">scegli un corso:</label> <select id="corsi"
+							name="corsi">
+							<option value="volvo">Volvo</option>
+							<option value="saab">Saab</option>
+							<option value="fiat">Fiat</option>
+							<option value="audi">Audi</option>
+						</select>
+					</div> -->
+					<div>
+						<span><button type="submit">Invio</button></span>
+					</div>
+				</div>
+			</form>
 		</div>
-	</form>
-	</div>
 	</div>
 </body>
 </html>

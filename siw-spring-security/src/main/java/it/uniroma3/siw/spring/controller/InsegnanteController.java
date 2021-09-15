@@ -53,4 +53,10 @@ public class InsegnanteController {
         }
         return "insegnanteForm";
     }
+    @RequestMapping(value = "/admin/deleteInsegnante/{id}", method = RequestMethod.POST)
+    public String deleteInsegnante(@PathVariable("id") Long id) {
+    	this.insegnanteService.deleteInsegnanteByID(id);
+    	return "insegnanti";
+    }
 }
+

@@ -7,9 +7,9 @@
     	<h4 class="t1" >Lista di lezioni</h4>
 		<ul>
 			<li class="t5" th:each="lezione : ${lezioni}">
-				<a href="lezione.html" 
+				<a href="lezioni.html" 
 				   th:href="@{'/lezione' + '/' + ${lezione.id}}" 
-				   th:date="|${insegnante.corso}|"></a>
+				   th:text="|${lezione.nome} ${lezione.data} ${lezione.durata} ${lezione.orario}|"></a>
 			</li>
 		</ul>
 	</div>

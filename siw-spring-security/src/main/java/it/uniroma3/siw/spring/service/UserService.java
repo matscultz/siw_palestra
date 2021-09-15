@@ -62,4 +62,10 @@ public class UserService {
 	public User inserisci(User user) {
 		return userRepository.save(user);
 	}
+
+    @Transactional
+	public void deleteUserByID(Long id) {
+		
+    	userRepository.deleteById(id);
+	}
 }

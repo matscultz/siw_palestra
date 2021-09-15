@@ -51,4 +51,9 @@ public class UserController {
 		}
 		return "userForm";
 	}
+    @RequestMapping(value = "/admin/deleteUser/{id}", method = RequestMethod.POST)
+    public String deleteUser(@PathVariable("id") Long id) {
+    	this.userService.deleteUserByID(id);
+    	return "insegnanti";
+    }
 }

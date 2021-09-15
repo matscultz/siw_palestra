@@ -1,5 +1,6 @@
 package it.uniroma3.siw.spring.model;
 
+import java.time.LocalTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -25,6 +26,9 @@ public class Corso {
 	
 	@Column
 	private String descrizione;
+	
+
+	
 	
 	@ManyToMany
 	private List<Insegnante> insegnanti;

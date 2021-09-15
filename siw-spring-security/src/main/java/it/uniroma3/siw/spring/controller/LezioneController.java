@@ -53,4 +53,9 @@ public class LezioneController {
         }
         return "lezioneForm";
     }
+    @RequestMapping(value = "/admin/deleteLezione/{id}", method = RequestMethod.POST)
+    public String deleteLezione(@PathVariable("id") Long id) {
+    	this.lezioneService.deleteLezioneByID(id);
+    	return "lezioni";
+    }
 }
