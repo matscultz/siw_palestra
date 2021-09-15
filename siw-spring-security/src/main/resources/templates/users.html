@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title=#{header.users})"> </head>
+<head
+	th:replace="fragments/base.html :: headerfiles(title=#{header.users})">
+</head>
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
 	<div>
-    	<h4 class="t1" >Lista di utenti</h4>
+		<h4 class="t1">Lista di utenti</h4>
 		<ul>
-			<li class="t5" th:each="user : ${users}">
-				<a href="user.html" 
-				   th:href="@{'/user' + '/' + ${user.id}}" 
-				   th:text="|${user.nome} ${user.cognome}|">Paolo Rossi</a>
-		
-			</li>
+			<li class="t5" th:each="user : ${users}"><a href="users.html"
+				th:href="@{'/user' + '/' + ${user.id}}"
+				th:text="|${user.nome} ${user.cognome}|">Paolo Rossi</a> <br>
+				<div>
+
+					<form action="#" th:object="${user}"
+						th:action="@{/admin/deleteUser/{id}(id=${user.id})}"
+						th:method="post">
+						<input type="hidden" name="_method" value="delete">
+						<button type="submit" id="submitButton">Cancella</button>
+					</form>
+				</div></li>
 		</ul>
 	</div>
-	<footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
 </html>

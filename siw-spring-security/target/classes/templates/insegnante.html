@@ -15,7 +15,7 @@
                <li th:each="lezione : ${insegnante.lezioni}">
                 <a href="lezione.html" 
                    th:href="@{'/lezione' + '/' + ${lezione.id}}"
-                  // ?? th:text="${lezione.titolo}"> </a>
+                 	th:text="${lezione.titolo}"> </a>
                    <div><br><br></div>
                </li>
         </ul>
@@ -23,7 +23,7 @@
                <li th:each="corso : ${insegnante.corsi}">
                 <a href="corso.html" 
                    th:href="@{'/corso' + '/' + ${corso.id}}"
-                  // ?? th:text="${corso.nome}"> </a>
+                   th:text="${corso.nome}"> </a>
                    <div><br><br></div>
                </li>
         </ul>
@@ -45,6 +45,6 @@
              </div>
              <div th:unless="${#authorization.expression('isAuthenticated()')}"> </div>
      </div>
-    <footer th:replace="fragments/base.html :: fondo"></footer>
+ 
 </body>
 </html>

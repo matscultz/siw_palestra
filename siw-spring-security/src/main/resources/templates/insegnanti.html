@@ -10,7 +10,15 @@
 				<a href="insegnanti.html" 
 				   th:href="@{'/insegnante' + '/' + ${insegnante.id}}" 
 				   th:text="|${insegnante.nome} ${insegnante.cognome}|">Paolo Rossi</a>
+				   <br>
+				    <div>
+            <form action="#" th:object="${insegnante}" th:action="@{/admin/deleteInsegnante/{id}(id=${insegnante.id})}" th:method="post">
+            <input type="hidden" name="_method" value="delete">
+              <button type="submit" id="submitButton">Cancella</button>
+            </form>
+             </div> 
 			</li>
+			
 		</ul>
 	</div>
 </html>
