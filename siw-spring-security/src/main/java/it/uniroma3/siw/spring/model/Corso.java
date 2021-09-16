@@ -3,6 +3,7 @@ package it.uniroma3.siw.spring.model;
 import java.time.LocalTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +31,10 @@ public class Corso {
 
 	
 	
-	@ManyToMany
+	/* @ManyToMany
+	private List<Insegnante> insegnanti; */
+	
+	@OneToMany(mappedBy="corso",cascade= {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	private List<Insegnante> insegnanti;
 	
 	@OneToMany(mappedBy = "corso")

@@ -29,6 +29,13 @@
 				<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
 			</div>
 			<div>
+				<span>Corso: </span> 
+				<select id="corso" th:field="*{corso}" required>
+				<option th:each="corso : ${corsi}"
+						th:value="${corso.id}" th:text="${corso.nome}"></option>
+				</select>
+			</div>
+			<div>
 				<span><button type="submit">Invio</button></span>
 			</div>
 		</div>

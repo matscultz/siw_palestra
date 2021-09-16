@@ -10,23 +10,24 @@
 			<span th:text="*{nome}">qui-va-nome</span>
 			<span th:text="*{cognome}">qui-va-cognome</span>
 			<span th:text="*{email}">qui-va-email</span>
+			<span th:text="*{corso.nome}">qui-va-il-corso</span>
    		</div>
-   		<ul>
+   		<!-- <ul>
                <li th:each="lezione : ${insegnante.lezioni}">
                 <a href="lezione.html" 
                    th:href="@{'/lezione' + '/' + ${lezione.id}}"
                  	th:text="${lezione.titolo}"> </a>
                    <div><br><br></div>
                </li>
-        </ul>
-         <ul>
+        </ul> -->
+        <!-- <ul>
                <li th:each="corso : ${insegnante.corsi}">
                 <a href="corso.html" 
                    th:href="@{'/corso' + '/' + ${corso.id}}"
                    th:text="${corso.nome}"> </a>
                    <div><br><br></div>
                </li>
-        </ul>
+        </ul> -->
     	<div th:unless="${insegnante}">Non esiste</div>
     	<div th:if="${#authorization.expression('isAuthenticated()')}"> 
         <div>

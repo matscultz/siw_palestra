@@ -17,7 +17,9 @@ public class InsegnanteService {
 	@Autowired
 	private InsegnanteRepository insegnanteRepository; 
 	@Autowired
-	private InsegnanteService insegnanteService; 
+	private InsegnanteService insegnanteService; // ??
+	@Autowired
+	private CorsoService corsoService;
 	
 	@Transactional
 	public Insegnante inserisci(Insegnante insegnante) {
@@ -52,9 +54,13 @@ public class InsegnanteService {
 		insegnanteRepository.deleteById(id);
 	}
 
-public InsegnanteService getInsegnanteService() {
+	public InsegnanteService getInsegnanteService() {
 		
 		return this.insegnanteService;
+	}
+	
+	public CorsoService getCorsoService() {
+		return this.corsoService;
 	}
 	
 }

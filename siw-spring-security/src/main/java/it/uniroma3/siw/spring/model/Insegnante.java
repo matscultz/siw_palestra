@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import lombok.Data;
@@ -32,8 +33,9 @@ public class Insegnante {
 	@OneToMany(mappedBy = "insegnante")
 	private List<Lezione> lezioni;
 	
-	@ManyToMany(mappedBy = "insegnanti")
-	private List<Corso> corsi;
+	/* @ManyToMany(mappedBy = "insegnanti")
+	private List<Corso> corsi; */
 	
-	
+	@ManyToOne
+	private Corso corso;
 }

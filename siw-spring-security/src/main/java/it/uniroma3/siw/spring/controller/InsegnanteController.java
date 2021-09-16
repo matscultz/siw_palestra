@@ -1,5 +1,7 @@
 package it.uniroma3.siw.spring.controller;
 
+import org.hibernate.annotations.common.util.impl.LoggerFactory;
+
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.spring.controller.validator.InsegnanteValidator;
 import it.uniroma3.siw.spring.model.Insegnante;
+import it.uniroma3.siw.spring.service.CorsoService;
 import it.uniroma3.siw.spring.service.InsegnanteService;
+import it.uniroma3.siw.spring.model.Corso;
 
 @Controller
 public class InsegnanteController {
@@ -23,10 +27,14 @@ public class InsegnanteController {
 	
     @Autowired
     private InsegnanteValidator insegnanteValidator;
+
+  
+   // private final Logger logger = LoggerFactory.getLogger(this.getClass());
         
     @RequestMapping(value="/admin/insegnante", method = RequestMethod.GET)
     public String addInsegnante(Model model) {
     	model.addAttribute("insegnante", new Insegnante());
+    	model.addAttribute("corsi",this.insegnanteService.getCorsoService().tutti());
         return "insegnanteForm";
     }
 
