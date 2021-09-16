@@ -31,13 +31,13 @@ public class Lezione {
 	private int durata;  // int o string?
 	
 	@Column(nullable = false)
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate data;
 	
 	
 	
 	@Column(nullable = false)
-	@DateTimeFormat(pattern = "HH:mm:ss")
+	@DateTimeFormat(pattern = "HH:mm")
 	private LocalTime orario;
 	
 	@ManyToOne
