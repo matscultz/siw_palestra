@@ -10,9 +10,8 @@
 			<span th:text="*{durata}">qui-va-durata</span>
 			<span th:text="*{data}">qui-va-data</span>
 			<span th:text="*{orario}">qui-va-orario</span>
-			<span th:text="*{orario}">qui-va-orario</span>
-			<span th:text="*{insegnante}">qui-va-orario</span>
-			<span th:text="*{corso}">qui-va-orario</span>
+			<!-- <span th:text="*{insegnante}">qui-va-insegnante</span> -->
+			<span th:text="*{corso.nome}">qui-va-corso</span>
    		</div>
 
     	<div th:unless="${lezione}">Non esiste</div>

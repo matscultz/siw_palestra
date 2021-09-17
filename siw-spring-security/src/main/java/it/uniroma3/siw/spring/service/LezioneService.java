@@ -18,6 +18,10 @@ public class LezioneService {
 	private LezioneRepository lezioneRepository; 
 	@Autowired
 	private LezioneService lezioneService; 
+	@Autowired
+	private CorsoService corsoService;
+	@Autowired
+	private InsegnanteService insegnanteService;
 	
 	@Transactional
 	public Lezione inserisci(Lezione lezione) {
@@ -55,5 +59,13 @@ public class LezioneService {
 	public LezioneService getLezioneService() {
 		
 		return this.lezioneService;
+	}
+
+	public CorsoService getCorsoService() {
+		return this.corsoService;
+	}
+
+	public InsegnanteService getInsegnanteService() {
+		return this.insegnanteService;
 	}
 }

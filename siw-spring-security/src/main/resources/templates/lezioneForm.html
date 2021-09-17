@@ -37,6 +37,20 @@
 							th:field="*{data}" /></span> <span th:if="${#fields.hasErrors('data')}"
 							th:errors="*{data}"></span>
 					</div>
+					<div>
+						<span>Corso: </span> 
+						<select id="corso" th:field="*{corso}" required>
+						<option th:each="corso : ${corsi}"
+						th:value="${corso.id}" th:text="${corso.nome}"></option>
+						</select>
+					</div>
+					<div>
+						<span>Insegnante: </span> 
+						<select id="insegnante" th:field="*{corso.insegnanti}" required>
+						<option th:each="insegnante : ${insegnanti}"
+						th:value="${insegnante.id}" th:text="${insegnante.nome} +  ' ' + ${insegnante.cognome}"></option>
+						</select>
+					</div>
 					<!-- 	<div>
 						<label for="corsi">scegli un corso:</label> <select id="corsi"
 							name="corsi">

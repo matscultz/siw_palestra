@@ -27,6 +27,8 @@ public class LezioneController {
     @RequestMapping(value="/admin/lezione", method = RequestMethod.GET)
     public String addLezione(Model model) {
     	model.addAttribute("lezione", new Lezione());
+    	model.addAttribute("corsi", this.lezioneService.getCorsoService().tutti());
+    	model.addAttribute("insegnanti", this.lezioneService.getInsegnanteService().tutti());
         return "lezioneForm";
     }
 
