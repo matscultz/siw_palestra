@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title=#{header.corsi})"> </head>
+	<head th:replace="fragments/base.html :: headerfiles(title=#{header.corsi})"> 
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">
+	</head>
 <body>
-	<header th:replace="fragments/base.html :: intestazione"></header>
-	<div>
+	<!-- <header th:replace="fragments/base.html :: intestazione"></header> -->
+	<div class="hero">
+		<div th:replace="fragments/base.html :: navbar"></div>
     	<h4 class="t1" >Lista di corsi</h4>
 		<ul>
 			<li class="t5" th:each="corso : ${corsi}">

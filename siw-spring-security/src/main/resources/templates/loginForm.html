@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title='Login')"> </head>
+	<head th:replace="fragments/base.html :: headerfiles(title='Login')">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet"> 
+	</head>
 <body>
-	<header th:replace="fragments/base.html :: intestazione"></header>
-	<div>
+	<div class="hero">
+		<div th:replace="fragments/base.html :: navbar"></div>
 		<h4>Login</h4>
 	</div>
 	<form th:action="@{/login}" method="POST">

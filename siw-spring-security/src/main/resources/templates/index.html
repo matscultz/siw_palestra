@@ -1,8 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-	<head th:replace="fragments/base.html :: headerfiles(title='SIW')"> </head>
+	<head th:replace="fragments/base.html :: headerfiles(title='SIW')">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">
+	<title>Home</title>
+	</head>
 <body>
-	<header th:replace="fragments/base.html :: intestazione"></header>
+	
+	<!-- <header th:replace="fragments/base.html :: intestazione"></header> -->
+	<div class="hero">
+	 	<div th:replace="fragments/base.html :: navbar"></div>
+		<section id="header">
+		<div class="banner">
+			<div class="left-column"
+	</section>
     <div>
     	<h4 th:text="#{header.index}">Welcome Page</h4>
 		<div>
@@ -18,3 +30,5 @@
     <footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
 </body>
 </html>
+
+
