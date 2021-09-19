@@ -11,12 +11,9 @@
 				   th:href="@{'/corso' + '/' + ${corso.id}}" 
 				   th:text="|${corso.nome} ${corso.descrizione}|">Pilates Corso di pilates</a>
 				   <br>
-				    <div>
-            <form action="#" th:object="${corso}" th:action="@{/admin/deleteCorso/{id}(id=${corso.id})}" th:method="post">
-            <input type="hidden" name="_method" value="delete">
-              <button type="submit" id="submitButton">Cancella</button>
-            </form>
-             </div> 
+				    <div><div th:if="${session.role}=='ADMIN'">
+    		<a class="btn" th:href="@{'/admin/corso' + '/' + ${corso.id}}">elimina</a></div>
+    	  </div>
 			</li>
 		</ul>
 	</div>

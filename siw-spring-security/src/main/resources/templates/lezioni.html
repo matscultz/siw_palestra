@@ -10,6 +10,9 @@
 				<a href="lezioni.html" 
 				   th:href="@{'/lezione' + '/' + ${lezione.id}}" 
 				   th:text="|${lezione.nome} ${lezione.data} ${lezione.durata} ${lezione.orario}|"></a>
+				   <div><div th:if="${session.role}=='ADMIN'">
+    		<a class="btn" th:href="@{'/admin/lezione' + '/' + ${lezione.id}}">elimina</a></div>
+    	  </div>
 			</li>
 		</ul>
 	</div>

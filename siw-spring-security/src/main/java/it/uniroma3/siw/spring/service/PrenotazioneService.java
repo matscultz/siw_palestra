@@ -17,6 +17,8 @@ public class PrenotazioneService {
 	
 	@Autowired
 	private PrenotazioneRepository prenotazioneRepository; 
+	@Autowired
+	private CredentialsService credentialsService;
 	
 	@Transactional
 	public Prenotazione inserisci(Prenotazione prenotazione) {
@@ -50,4 +52,18 @@ public class PrenotazioneService {
 	public void deletePrenotazioneByID(Long id) {
 		prenotazioneRepository.deleteById(id);
 	}
+	
+	@Transactional
+	public CredentialsService getCredentialsService() {
+		return credentialsService;
+	}
+	@Transactional
+	public boolean deletedPrenotazione(Long id) {
+		try {
+			this.prenotazioneRepository.deleteById(id);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+}
 }

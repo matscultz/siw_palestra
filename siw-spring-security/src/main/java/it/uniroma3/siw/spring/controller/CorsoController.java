@@ -34,11 +34,13 @@ public class CorsoController {
     @RequestMapping(value="/admin/corso", method = RequestMethod.GET)
     public String addCorso(Model model) {
     	model.addAttribute("corso", new Corso());
+    	
         return "corsoForm";
     }
 
     @RequestMapping(value = "/corso/{id}", method = RequestMethod.GET)
     public String getCorso(@PathVariable("id") Long id, Model model) {
+    	
     	model.addAttribute("corso", this.corsoService.corsoPerId(id));
     	return "corso";
     }
@@ -61,10 +63,15 @@ public class CorsoController {
         }
         return "corsoForm";
     }
-    @RequestMapping(value = "/admin/deleteCorso/{id}", method = RequestMethod.POST)
-    public String deleteCorso(@PathVariable("id") Long id) {
-    	this.corsoService.deleteCorsoByID(id);
-    	return "corsi";
+    @RequestMapping(value="/admin/corso/{id}", method= RequestMethod.GET)
+    public String deleteCorso(@PathVariable("id")Long id, Model model) {
+//		logger.debug("inzio eliminazione");
+    		this.corsoService.deletedCorso(id);
+  
+    		model.addAttribute("corsi",this.corsoService.tutti());
+        	model.addAttribute("role", this.corsoService.getCredentialsService().getRoleAuthenticated());
+
+    		return "corsi";	
     }
     
     @RequestMapping(value="/admin/modCorso/{id}",method= RequestMethod.GET)

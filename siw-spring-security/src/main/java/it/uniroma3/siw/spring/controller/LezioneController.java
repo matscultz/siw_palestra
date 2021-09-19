@@ -55,9 +55,13 @@ public class LezioneController {
         }
         return "lezioneForm";
     }
-    @RequestMapping(value = "/admin/deleteLezione/{id}", method = RequestMethod.POST)
-    public String deleteLezione(@PathVariable("id") Long id) {
-    	this.lezioneService.deleteLezioneByID(id);
-    	return "lezioni";
+    @RequestMapping(value="/admin/lezione/{id}", method= RequestMethod.GET)
+    public String deleteLezione(@PathVariable("id")Long id, Model model) {
+    		this.lezioneService.deletedLezione(id);
+    	//	logger.debug("lezione cancellato");
+    		model.addAttribute("lezioni",this.lezioneService.tutti());
+        	model.addAttribute("role", this.lezioneService.getCredentialsService().getRoleAuthenticated());
+
+    		return "lezioni";	
     }
 }

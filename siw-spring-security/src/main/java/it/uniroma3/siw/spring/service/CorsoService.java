@@ -13,10 +13,14 @@ import it.uniroma3.siw.spring.repository.CorsoRepository;
 
 @Service
 public class CorsoService {
-	
+
 	@Autowired
-	private CorsoRepository corsoRepository; 
-	
+	private CorsoRepository corsoRepository;
+	@Autowired
+	private CredentialsService credentialsService;
+	@Autowired
+	private InsegnanteService insegnanteService; // ??
+
 	@Transactional
 	public Corso inserisci(Corso corso) {
 		return corsoRepository.save(corso);
@@ -32,7 +36,7 @@ public class CorsoService {
 		Optional<Corso> optional = corsoRepository.findById(id);
 		if (optional.isPresent())
 			return optional.get();
-		else 
+		else
 			return null;
 	}
 
@@ -41,12 +45,30 @@ public class CorsoService {
 		List<Corso> corsi = this.corsoRepository.findByNome(corso.getNome());
 		if (corsi.size() > 0)
 			return true;
-		else 
+		else
 			return false;
 	}
-	
+
 	@Transactional
 	public void deleteCorsoByID(Long id) {
 		corsoRepository.deleteById(id);
+	}
+
+	@Transactional
+	public CredentialsService getCredentialsService() {
+		return credentialsService;
+	}
+
+	@Transactional
+	public boolean deletedCorso(Long id) {
+		try {
+			this.corsoRepository.deleteById(id);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
+	public InsegnanteService getInsegnanteService() {
+		return this.insegnanteService;
 	}
 }

@@ -17,9 +17,12 @@ public class InsegnanteService {
 	@Autowired
 	private InsegnanteRepository insegnanteRepository; 
 	@Autowired
-	private InsegnanteService insegnanteService; // ??
+	private InsegnanteService insegnanteService; 
 	@Autowired
 	private CorsoService corsoService;
+	@Autowired
+	private CredentialsService credentialsService;
+	
 	
 	@Transactional
 	public Insegnante inserisci(Insegnante insegnante) {
@@ -63,4 +66,17 @@ public class InsegnanteService {
 		return this.corsoService;
 	}
 	
+	@Transactional
+	public CredentialsService getCredentialsService() {
+		return credentialsService;
+	}
+	@Transactional
+	public boolean deletedInsegnante(Long id) {
+		try {
+			this.insegnanteRepository.deleteById(id);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+}
 }

@@ -61,10 +61,15 @@ public class InsegnanteController {
         }
         return "insegnanteForm";
     }
-    @RequestMapping(value = "/admin/deleteInsegnante/{id}", method = RequestMethod.POST)
-    public String deleteInsegnante(@PathVariable("id") Long id) {
-    	this.insegnanteService.deleteInsegnanteByID(id);
-    	return "insegnanti";
+    @RequestMapping(value="/admin/insegnante/{id}", method= RequestMethod.GET)
+    public String deleteInsegnante(@PathVariable("id")Long id, Model model) {
+//		logger.debug("inzio eliminazione");
+    		this.insegnanteService.deletedInsegnante(id);
+  
+    		model.addAttribute("insegnanti",this.insegnanteService.tutti());
+        	model.addAttribute("role", this.insegnanteService.getCredentialsService().getRoleAuthenticated());
+
+    		return "insegnanti";	
     }
 }
 

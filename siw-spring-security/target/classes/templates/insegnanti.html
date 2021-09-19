@@ -11,12 +11,9 @@
 				   th:href="@{'/insegnante' + '/' + ${insegnante.id}}" 
 				   th:text="|${insegnante.nome} ${insegnante.cognome}|">Paolo Rossi</a>
 				   <br>
-				    <div>
-            <form action="#" th:object="${insegnante}" th:action="@{/admin/deleteInsegnante/{id}(id=${insegnante.id})}" th:method="post">
-            <input type="hidden" name="_method" value="delete">
-              <button type="submit" id="submitButton">Cancella</button>
-            </form>
-             </div> 
+			<div><div th:if="${session.role}=='ADMIN'">
+    		<a class="btn" th:href="@{'/admin/insegnante' + '/' + ${insegnante.id}}">elimina</a></div>
+    	  </div> 
 			</li>
 			
 		</ul>

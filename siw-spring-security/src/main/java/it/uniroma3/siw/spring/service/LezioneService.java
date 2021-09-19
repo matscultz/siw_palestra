@@ -22,6 +22,8 @@ public class LezioneService {
 	private CorsoService corsoService;
 	@Autowired
 	private InsegnanteService insegnanteService;
+	@Autowired
+	private CredentialsService credentialsService;
 	
 	@Transactional
 	public Lezione inserisci(Lezione lezione) {
@@ -68,4 +70,18 @@ public class LezioneService {
 	public InsegnanteService getInsegnanteService() {
 		return this.insegnanteService;
 	}
+	
+	@Transactional
+	public CredentialsService getCredentialsService() {
+		return credentialsService;
+	}
+	@Transactional
+	public boolean deletedLezione(Long id) {
+		try {
+			this.lezioneRepository.deleteById(id);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+}
 }
