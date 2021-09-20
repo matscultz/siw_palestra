@@ -40,8 +40,10 @@ public class CorsoController {
 
     @RequestMapping(value = "/corso/{id}", method = RequestMethod.GET)
     public String getCorso(@PathVariable("id") Long id, Model model) {
-    	
-    	model.addAttribute("corso", this.corsoService.corsoPerId(id));
+    	Corso corso = this.corsoService.corsoPerId(id);
+    	model.addAttribute("corso", corso);
+    	/* model.addAttribute("corso", this.corsoService.corsoPerId(id)); */
+    	model.addAttribute("lezioni", corso.getLezioni());
     	return "corso";
     }
 
