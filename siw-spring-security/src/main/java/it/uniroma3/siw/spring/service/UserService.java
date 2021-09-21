@@ -5,6 +5,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import it.uniroma3.siw.spring.model.Credentials;
 import it.uniroma3.siw.spring.model.User;
 import it.uniroma3.siw.spring.repository.UserRepository;
 
@@ -67,5 +68,6 @@ public class UserService {
 	public void deleteUserByID(Long id) {
 		
     	userRepository.deleteById(id);
-	}
+	}  
+    
 }

@@ -1,6 +1,7 @@
 package it.uniroma3.siw.authentication;
 
 import org.springframework.context.annotation.Configuration;
+
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -10,11 +11,12 @@ import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.sql.DataSource;
 
 import static it.uniroma3.siw.spring.model.Credentials.ADMIN_ROLE;
-//import static it.uniroma3.siw.spring.model.Credentials.DEFAULT_ROLE;
+import static it.uniroma3.siw.spring.model.Credentials.DEFAULT_ROLE;
 
 /**
  * The AuthConfiguration is a Spring Security Configuration.
@@ -41,9 +43,11 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 // chiunque (autenticato o no) può accedere alle pagine index, login, register, ai css e alle immagini
                 .antMatchers(HttpMethod.GET, "/", "/index", "/login", "/register", "/css/**", "/images/**", "/corso").permitAll()
-                .antMatchers(HttpMethod.GET, "/corso/{id}", "corsi").permitAll()
+                .antMatchers(HttpMethod.GET, "/corso/{id}", "corsi", "/prenotazione/{id}", "/prenotazioni", "/prenotazione").permitAll()
+                .antMatchers(HttpMethod.GET, "/lezione/{id}", "/lezione", "/lezioni").permitAll()
                 // chiunque (autenticato o no) può mandare richieste POST al punto di accesso per login e register 
                 .antMatchers(HttpMethod.POST, "/login", "/register").permitAll()
+                .antMatchers(HttpMethod.POST, "/prenotazione").hasAnyAuthority(DEFAULT_ROLE)
                 // solo gli utenti autenticati con ruolo ADMIN possono accedere a risorse con path /admin/**
                 .antMatchers(HttpMethod.GET, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
                 .antMatchers(HttpMethod.POST, "/admin/**").hasAnyAuthority(ADMIN_ROLE)
@@ -63,6 +67,7 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
                 .and().logout()
                 // il logout è attivato con una richiesta GET a "/logout"
                 .logoutUrl("/logout")
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 // in caso di successo, si viene reindirizzati alla /index page
                 .logoutSuccessUrl("/index")        
                 .invalidateHttpSession(true)

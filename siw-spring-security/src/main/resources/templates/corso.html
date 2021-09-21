@@ -19,15 +19,13 @@
                    <div><br><br></div>
                </li>
         </ul> -->
-        <form th:action="@{/prenotazione}" method="POST" th:object="${prenotazione}">
          <div>
                <li th:each="lezione : ${lezioni}">
                 <a href="lezione.html" th:href="@{'/lezione' + '/' + ${lezione.id}}" th:text="${lezione.nome + lezione.durata}"> </a>
-                	<span><button type="submit">PRENOTA</button></span>
+                	<!-- <span><button type="submit">PRENOTA</button></span> -->
                    <div><br><br></div>
                </li>
         </div>
-        </form>
     	<div th:unless="${corso}">Non esiste</div>
     	<div th:if="${#authorization.expression('isAuthenticated()')}"> 
         <div>

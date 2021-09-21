@@ -44,4 +44,5 @@ public class CredentialsService {
     	Credentials credentials = this.getCredentials(userDetails.getUsername());
     	return credentials.getRole();
 	}
+  
 }

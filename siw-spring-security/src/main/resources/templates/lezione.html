@@ -12,7 +12,11 @@
 			<span th:text="*{orario}">qui-va-orario</span>
 			<!-- <span th:text="*{insegnante}">qui-va-insegnante</span> -->
 			<span th:text="*{corso.nome}">qui-va-corso</span>
+			<form th:action="@{/prenotazione}" method="POST" th:object="${prenotazione}">
+				<span><button type="submit">PRENOTA</button></span>
+			</form>
    		</div>
+   		
 
     	<div th:unless="${lezione}">Non esiste</div>
     	<div th:if="${#authorization.expression('isAuthenticated()')}"> 

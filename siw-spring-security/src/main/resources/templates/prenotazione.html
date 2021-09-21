@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.prenotazione})"> </head>
+<body>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+    <div>
+    	<h4 th:text="#{header.prenotazione}">...</h4>
+    	<div th:if="${prenotazione}" th:object="${prenotazione}">
+			<!-- <h5 th:text="*{lezione.nome}">nome</h5> -->
+			<!-- <span th:text="*{descrizione}">descrizione </span> -->
+   		</div>
+    	<div th:unless="${prenotazione}">Questa prenotazione non esiste</div>
+    </div>
+    <footer th:replace="fragments/base.html :: fondo('/default')"></footer>
+</body>
+</html>
