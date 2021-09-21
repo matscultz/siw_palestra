@@ -20,12 +20,6 @@ public class Prenotazione {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column
-	private String nome;
-	
-	@Column
-	private LocalDate data;
-	
 	@ManyToOne
 	private User cliente;
 	

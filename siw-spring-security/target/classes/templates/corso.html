@@ -19,7 +19,7 @@
                    <div><br><br></div>
                </li>
         </ul> -->
-        <form th:action="@{/admin/prenotazione}" method="POST" th:object="${prenotazione}">
+        <form th:action="@{/prenotazione}" method="POST" th:object="${prenotazione}">
          <div>
                <li th:each="lezione : ${lezioni}">
                 <a href="lezione.html" th:href="@{'/lezione' + '/' + ${lezione.id}}" th:text="${lezione.nome + lezione.durata}"> </a>
