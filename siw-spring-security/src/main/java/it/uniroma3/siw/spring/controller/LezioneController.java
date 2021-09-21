@@ -78,5 +78,17 @@ public class LezioneController {
 
     		return "lezioni";	
     }
+    
+    @RequestMapping(value = "/lezione/{id}", method = RequestMethod.POST)
+    public String prenotaLezione(@ModelAttribute("prenotazione") Prenotazione prenotazione, @PathVariable("id") Long id, Model model) {
+        UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Credentials credentials = this.credentialsService.getCredentials(userDetails.getUsername());
+        User user = credentials.getUser();
+        prenotazione.setCliente(user);
+        prenotazione.setLezione(this.lezioneService.lezionePerId(id));
+        this.prenotazioneService.inserisci(prenotazione);
+        user.getPrenotazioni().add(prenotazione);
+        return "redirect:/prenotazione";
+    }
 
 }

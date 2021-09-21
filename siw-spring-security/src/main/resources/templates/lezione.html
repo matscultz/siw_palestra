@@ -12,9 +12,12 @@
 			<span th:text="*{orario}">qui-va-orario</span>
 			<!-- <span th:text="*{insegnante}">qui-va-insegnante</span> -->
 			<span th:text="*{corso.nome}">qui-va-corso</span>
-			<form th:action="@{/prenotazione}" method="POST" th:object="${prenotazione}">
-				<span><button type="submit">PRENOTA</button></span>
-			</form>
+			<form th:action="@{/lezione/{id} (id=*{id})}" method="POST" th:object="${lezione}">
+        		<div>
+                   <span><button type="submit">PRENOTA</button></span>
+                  <div><br><br></div>
+       	 		</div>
+        	</form> 
    		</div>
    		
 

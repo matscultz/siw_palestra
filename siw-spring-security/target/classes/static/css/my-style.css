@@ -27,7 +27,7 @@
 	align-items: center;
 }
 
-ul{
+.lineanavbar{
 	flex: 1;
 	text-align: right;
 }

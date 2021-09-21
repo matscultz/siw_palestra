@@ -52,25 +52,24 @@ public class PrenotazioneController {
 	    	return "prenotazioni";
 	    }
 	    
-	    @RequestMapping(value = "/prenotazione", method = RequestMethod.POST)
+	    /* @RequestMapping(value = "/prenotazione", method = RequestMethod.POST)
 	    public String aggiungiPrenotazione(@ModelAttribute("prenotazione") Prenotazione prenotazione, 
 	    									Model model, BindingResult bindingResult) {
 	    	/* this.prenotazioneService.validate(prenotazione, bindingResult); */
 	    	
-	     	List<Prenotazione> prenotazioneCliente = new ArrayList<Prenotazione>();
+	     /*	List<Prenotazione> prenotazioneCliente = new ArrayList<Prenotazione>();
 	    	prenotazioneCliente = this.prenotazioneService.prenotazioniUtente();
 	        if (!bindingResult.hasErrors()) {
 	        	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 	            Credentials credentials = this.credentialsService.getCredentials(userDetails.getUsername());
 	            User cliente = credentials.getUser();
 	            prenotazione.setCliente(cliente);
-	           /*  prenotazione.setLezione(this.lezioneService.lezionePerId(id)); */
 	        	this.prenotazioneService.inserisci(prenotazione);
 	            model.addAttribute("prenotazioni", this.prenotazioneService.listaPUtente(cliente.getId()));
 	            return "prenotazioni";
 	        }
 	        return "prenotazione";
-	    }
+	    } */
 
 	
 }
