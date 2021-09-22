@@ -13,7 +13,7 @@
 			<span th:text="*{corso.nome}">qui-va-corso</span>
 			<form th:action="@{/lezione/{id} (id=*{id})}" method="POST" th:object="${lezione}">
         		<div>
-                   <span><button type="submit">PRENOTA</button></span>
+               <div th:if="${session.role}=='DEFAULT'">    <span><button type="submit">PRENOTA</button></span></div>
                   <div><br><br></div>
        	 		</div>
         	</form> 
@@ -34,7 +34,6 @@
     	  </div>
              </div>
              <div th:unless="${#authorization.expression('isAuthenticated()')}"> </div>
-     </div>
  
 </body>
 </html>

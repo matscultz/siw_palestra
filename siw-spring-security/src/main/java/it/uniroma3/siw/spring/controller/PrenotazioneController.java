@@ -19,9 +19,11 @@ import it.uniroma3.siw.spring.model.Prenotazione;
 import it.uniroma3.siw.spring.model.User;
 import it.uniroma3.siw.spring.service.CorsoService;
 import it.uniroma3.siw.spring.service.CredentialsService;
+import it.uniroma3.siw.spring.service.InsegnanteService;
 import it.uniroma3.siw.spring.service.LezioneService;
 import it.uniroma3.siw.spring.service.PrenotazioneService;
 import it.uniroma3.siw.spring.service.UserService;
+import jdk.internal.org.jline.utils.Log;
 
 @Controller
 public class PrenotazioneController {
@@ -36,6 +38,8 @@ public class PrenotazioneController {
 		private CredentialsService credentialsService;
 		@Autowired
 		private LezioneService lezioneService;
+		@Autowired
+		private InsegnanteService insegnanteService;
 	        
 	    @RequestMapping(value = "/prenotazione/{id}", method = RequestMethod.GET)
 	    public String getPrenotazione(@PathVariable("id") Long id, Model model) {
@@ -51,6 +55,16 @@ public class PrenotazioneController {
             model.addAttribute("prenotazioni", this.prenotazioneService.listaPUtente(cliente.getId()));
 	    	return "prenotazioni";
 	    }
+	    
+	    @RequestMapping(value="/admin/prenotazione/{id}", method= RequestMethod.GET)
+	    public String deletePrenotazione(@PathVariable("id")Long id, Model model) {
+	    		this.prenotazioneService.deletePrenotazioneByID(id);
+	    		model.addAttribute("prenotazioni",this.prenotazioneService.tutti());
+	        	model.addAttribute("role", this.prenotazioneService.getCredentialsService().getRoleAuthenticated());
+	        
+	    		return "prenotazioni";	
+	    }
+	    
 	    
 	    /* @RequestMapping(value = "/prenotazione", method = RequestMethod.POST)
 	    public String aggiungiPrenotazione(@ModelAttribute("prenotazione") Prenotazione prenotazione, 

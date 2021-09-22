@@ -72,7 +72,6 @@ public class LezioneController {
     @RequestMapping(value="/admin/lezione/{id}", method= RequestMethod.GET)
     public String deleteLezione(@PathVariable("id")Long id, Model model) {
     		this.lezioneService.deletedLezione(id);
-    	//	logger.debug("lezione cancellato");
     		model.addAttribute("lezioni",this.lezioneService.tutti());
         	model.addAttribute("role", this.lezioneService.getCredentialsService().getRoleAuthenticated());
 

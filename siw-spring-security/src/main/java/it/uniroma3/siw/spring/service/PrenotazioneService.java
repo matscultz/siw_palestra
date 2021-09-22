@@ -65,6 +65,10 @@ public class PrenotazioneService {
 			return false;
 		}
 }
+	@Transactional
+	public CredentialsService getCredentialsService() {
+		return credentialsService;
+	}
 
 	public List<Prenotazione> prenotazioniUtente() {
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();

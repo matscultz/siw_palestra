@@ -19,7 +19,9 @@ public class CorsoService {
 	@Autowired
 	private CredentialsService credentialsService;
 	@Autowired
-	private InsegnanteService insegnanteService; // ??
+	private InsegnanteService insegnanteService; 
+	@Autowired
+	private CorsoService corsoService;
 
 	@Transactional
 	public Corso inserisci(Corso corso) {
@@ -70,5 +72,8 @@ public class CorsoService {
 	}
 	public InsegnanteService getInsegnanteService() {
 		return this.insegnanteService;
+	}
+	public CorsoService getCorsoService() {
+		return this.corsoService;
 	}
 }

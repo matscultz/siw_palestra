@@ -9,7 +9,11 @@
 			<li th:each="prenotazione : ${prenotazioni}">
 				<a href="prenotazione.html" 
 				   th:href="@{'/prenotazione' + '/' + ${prenotazione.id}}" 
-				   th:text="${prenotazione.id}">Yoga</a> -->
+				   th:text="${prenotazione.id}">Yoga</a> 
+				   <br>
+				   <div>
+    		<a class="btn" th:href="@{'/admin/prenotazione' + '/' + ${prenotazione.id}}">elimina</a>
+    	  </div>
 			</li>
 		</ul>
 	</div>

@@ -67,9 +67,7 @@ public class CorsoController {
     }
     @RequestMapping(value="/admin/corso/{id}", method= RequestMethod.GET)
     public String deleteCorso(@PathVariable("id")Long id, Model model) {
-//		logger.debug("inzio eliminazione");
     		this.corsoService.deletedCorso(id);
-  
     		model.addAttribute("corsi",this.corsoService.tutti());
         	model.addAttribute("role", this.corsoService.getCredentialsService().getRoleAuthenticated());
 
