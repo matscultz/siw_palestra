@@ -7,9 +7,7 @@
 </head>
 <body>
 	<header th:fragment="intestazione">
-		<h1>Siw - Spring Very Simple Demo</h1>
-	</header>
-	<navbar>
+		<navbar>
 			<img class="logo" src="images/logomnc.png">
 			<ul class="lineanavbar">
 				<li><a href="corso" th:href="@{/corso}">Corsi</a></li>
@@ -17,6 +15,7 @@
 				<li><a th:href="@{/login}" th:text="#{index.login}">Login</a></li>
 			</ul>
 	</navbar>
+	</header>
 
 	<p>Go to the next page to see fragments in action</p>
 	<aside>

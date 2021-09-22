@@ -8,9 +8,15 @@
 <body>
 	<div class="hero">
 		<div th:replace="fragments/base.html :: navbar"></div>
-		<h4>Login</h4>
 	</div>
 	<form th:action="@{/login}" method="POST">
+		<h4>Login</h4>
+		<input name="username" type="text" required placeholder="username"/>
+		<input name="password" type="password" required placeholder="password"/>
+		<div class="button-box">
+			<button type="submit">Login</button>
+		</div>
+	<!-- <form th:action="@{/login}" method="POST">
 		<div>
 			<div>
 				<span>Username:</span>
@@ -24,7 +30,7 @@
 				<span><button type="submit">Login</button></span>
 			</div>
 		</div>
-	</form>
+	</form> -->
     <footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
 </body>
 </html>

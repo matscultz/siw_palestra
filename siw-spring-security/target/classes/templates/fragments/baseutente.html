@@ -7,15 +7,16 @@
 </head>
 <body>
 	<header th:fragment="intestazione">
-		<h1>Siw - Spring Very Simple Demo</h1>
-	</header>
-	<navbar>
-			<!-- <img class="logo" src="images/logomnc.png"> -->
-			<ul>
+		<navbar>
+			<img class="logo" src="images/logomnc.png">
+			<ul class="lineanavbar">
+				<li><a href="default" th:href="@{/default}">Home</a></li>
 				<li><a href="corso" th:href="@{/corso}">Corsi</a></li>
-				<li><a href="insegnanti" th:href="@{/insegnante}">Contatti</a></li>
+				<li><a href="prenotazione" th:href="@{/prenotazione}">Prenotazioni</a></li>
+				<li><a th:href="@{/logout}">Logout</a></li>
 			</ul>
 	</navbar>
+	</header>
 
 	<p>Go to the next page to see fragments in action</p>
 	<aside>
@@ -28,3 +29,4 @@
 	</footer>
 </body>
 </html>
+

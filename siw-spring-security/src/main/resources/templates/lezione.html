@@ -2,8 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.lezione})"> </head>
 <body>
-	<header th:replace="fragments/base.html :: intestazione"></header>
-    <div>
+    <div th:replace="fragments/base.html :: navbar"></div>
     	<h4  class="t1"></h4>
     	
     	<div class="t2" th:if="${lezione}" th:object="${lezione}">

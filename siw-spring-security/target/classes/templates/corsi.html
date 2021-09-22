@@ -6,9 +6,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">
 	</head>
 <body>
-	<!-- <header th:replace="fragments/base.html :: intestazione"></header> -->
+	<header th:replace="fragments/base.html :: intestazione"></header>
 	<div class="hero">
-		<div th:replace="fragments/base.html :: navbar"></div>
     	<h4 class="t1" >Lista di corsi</h4>
 		<ul>
 			<li class="t5" th:each="corso : ${corsi}">

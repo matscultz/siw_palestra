@@ -9,6 +9,7 @@
 <body>
 	
 	<!-- <header th:replace="fragments/base.html :: intestazione"></header> -->
+	<section>
 	<div class="hero">
 	 	<div th:replace="fragments/base.html :: navbar"></div>
 		<section id="header">
@@ -27,6 +28,22 @@
 			<a href="corso" th:href="@{/corso}">Elenco corsi</a>
    		</div>
     </div>
+    </section>
+    
+    <!-- CONTACT -->
+    
+    <section id="contact">
+    	<div class="container contact-row">
+    		<div class="contact-left-column">
+    			<h1>Contatti</h1>
+    			
+    		</div>
+    		<div class="contact-right-column">
+    			<img src="images/contact.png">
+    		</div>
+    	</div>
+    </section>
+    
     <footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
 </body>
 </html>
