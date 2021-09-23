@@ -51,9 +51,9 @@ public class CorsoController {
         return "corsoForm";
     }
     @PostMapping("/corsiSave")
-    public RedirectView saveCorso(Corso corso,
-            @RequestParam("image") MultipartFile multipartFile) throws IOException {
-         
+    public String saveCorso(@ModelAttribute Corso corso,
+ Model model ,      @RequestParam("image") MultipartFile multipartFile, BindingResult bindingResult) throws IOException {
+        if(!bindingResult.hasErrors()) { 
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         corso.setPhotos(fileName);
          
@@ -62,8 +62,12 @@ public class CorsoController {
         String uploadDir = "corso-photos/" + savedCorso.getId();
  
         FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
-         
-        return new RedirectView("corsi", true);
+        model.addAttribute("corsi", this.corsoService.tutti());
+        
+        return "corsi";}
+        
+        else
+        	return "corsoForm";
     }
 
     @RequestMapping(value = "/corso/{id}", method = RequestMethod.GET)

@@ -11,8 +11,8 @@
     	<div th:unless="${prenotazione}">Questa prenotazione non esiste</div>
  
     	<br>
-    	<div>
-    		<a class="btn" th:href="@{'/admin/prenotazione' + '/' + ${prenotazione.id}}">elimina</a>
+    	<div><div th:if="${session.role}=='DEFAULT'">
+    		<a class="btn" th:href="@{'/admin/prenotazione' + '/' + ${prenotazione.id}}">elimina</a></div>
     	  </div>
     </div>
     <footer th:replace="fragments/base.html :: fondo('/default')"></footer>
