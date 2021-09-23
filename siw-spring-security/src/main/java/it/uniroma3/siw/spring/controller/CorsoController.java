@@ -1,18 +1,30 @@
 package it.uniroma3.siw.spring.controller;
 
+import java.io.IOException;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.view.RedirectView;
 
+import it.uniroma3.siw.FileUploadUtil;
 import it.uniroma3.siw.spring.controller.validator.CorsoValidator;
 import it.uniroma3.siw.spring.model.Corso;
+import it.uniroma3.siw.spring.model.User;
+import it.uniroma3.siw.spring.repository.CorsoRepository;
 import it.uniroma3.siw.spring.service.CorsoService;
 import it.uniroma3.siw.spring.service.InsegnanteService;
 import it.uniroma3.siw.spring.service.LezioneService;
@@ -22,7 +34,8 @@ public class CorsoController {
 	
 	@Autowired
 	private CorsoService corsoService;
-	
+	@Autowired
+	private CorsoRepository corsoRepository;	
     @Autowired
     private CorsoValidator corsoValidator;
    
@@ -36,6 +49,21 @@ public class CorsoController {
     	model.addAttribute("corso", new Corso());
     	
         return "corsoForm";
+    }
+    @PostMapping("/corsiSave")
+    public RedirectView saveCorso(Corso corso,
+            @RequestParam("image") MultipartFile multipartFile) throws IOException {
+         
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        corso.setPhotos(fileName);
+         
+       Corso savedCorso = corsoRepository.save(corso);
+ 
+        String uploadDir = "corso-photos/" + savedCorso.getId();
+ 
+        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+         
+        return new RedirectView("corsi", true);
     }
 
     @RequestMapping(value = "/corso/{id}", method = RequestMethod.GET)

@@ -1,5 +1,6 @@
 package it.uniroma3.siw.spring.model;
 
+import java.beans.Transient;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -28,9 +29,15 @@ public class Corso {
 	@Column
 	private String descrizione;
 	
-
+	 @Column(nullable = true, length = 64)
+	    private String photos;
 	
-	
+	 @Transient
+	    public String getPhotosImagePath() {
+	        if (photos == null || id == null) return null;
+	         
+	        return "/corso-photos/" + id + "/" + photos;
+	    }
 	/* @ManyToMany
 	private List<Insegnante> insegnanti; */
 	
