@@ -12,7 +12,7 @@
  
     	<br>
     	<div><div th:if="${session.role}=='DEFAULT'">
-    		<a class="btn" th:href="@{'/admin/prenotazione' + '/' + ${prenotazione.id}}">elimina</a></div>
+    		<a class="btn" th:href="@{'/prenotazioneDelete' + '/' + ${prenotazione.id}}">elimina</a></div>
     	  </div>
     </div>
     <footer th:replace="fragments/base.html :: fondo('/default')"></footer>

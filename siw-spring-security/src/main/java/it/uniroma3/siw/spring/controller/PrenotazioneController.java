@@ -56,9 +56,9 @@ public class PrenotazioneController {
 	    	return "prenotazioni";
 	    }
 	    
-	    @RequestMapping(value="/admin/prenotazione/{id}", method= RequestMethod.GET)
+	    @RequestMapping(value="/prenotazioneDelete/{id}", method= RequestMethod.GET)
 	    public String deletePrenotazione(@PathVariable("id")Long id, Model model) {
-	    		this.prenotazioneService.deletePrenotazioneByID(id);
+	    		this.prenotazioneService.deletedPrenotazione(id);
 	    		model.addAttribute("prenotazioni",this.prenotazioneService.tutti());
 	        	model.addAttribute("role", this.prenotazioneService.getCredentialsService().getRoleAuthenticated());
 	        
