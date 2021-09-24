@@ -1,6 +1,7 @@
 package it.uniroma3.siw.spring.controller;
 
 import java.util.ArrayList;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,6 @@ import it.uniroma3.siw.spring.service.InsegnanteService;
 import it.uniroma3.siw.spring.service.LezioneService;
 import it.uniroma3.siw.spring.service.PrenotazioneService;
 import it.uniroma3.siw.spring.service.UserService;
-import jdk.internal.org.jline.utils.Log;
 
 @Controller
 public class PrenotazioneController {
@@ -31,15 +31,15 @@ public class PrenotazioneController {
 	   @Autowired
 		private PrenotazioneService prenotazioneService;
 		@Autowired
+		private CredentialsService credentialsService;
+		/* @Autowired
 		private UserService userService;
 		@Autowired
 		private CorsoService corsoService;
 		@Autowired
-		private CredentialsService credentialsService;
-		@Autowired
 		private LezioneService lezioneService;
 		@Autowired
-		private InsegnanteService insegnanteService;
+		private InsegnanteService insegnanteService; */
 	        
 	    @RequestMapping(value = "/prenotazione/{id}", method = RequestMethod.GET)
 	    public String getPrenotazione(@PathVariable("id") Long id, Model model) {
