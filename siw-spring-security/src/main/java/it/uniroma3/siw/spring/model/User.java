@@ -27,7 +27,7 @@ public class User {
 	@Column
 	private String cognome;
 		
-	@OneToMany
+	@OneToMany(mappedBy = "cliente")
 	private List<Prenotazione> prenotazioni;
 
 }

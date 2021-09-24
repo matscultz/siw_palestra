@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import it.uniroma3.siw.spring.controller.validator.LezioneValidator;
+import it.uniroma3.siw.spring.controller.validator.modificaLezioneValidator;
 import it.uniroma3.siw.spring.model.Credentials;
 import it.uniroma3.siw.spring.model.Lezione;
 import it.uniroma3.siw.spring.model.Prenotazione;
@@ -30,9 +31,10 @@ public class LezioneController {
 	
 	@Autowired
 	private LezioneService lezioneService;
-	
-    @Autowired
+	@Autowired
     private LezioneValidator lezioneValidator;
+	@Autowired
+	private modificaLezioneValidator modificaLezioneValidator;
     @Autowired
     private PrenotazioneService prenotazioneService;
     @Autowired
@@ -88,6 +90,26 @@ public class LezioneController {
         this.prenotazioneService.inserisci(prenotazione);
         user.getPrenotazioni().add(prenotazione);
         return "redirect:/prenotazione";
+    }
+    
+    @RequestMapping(value="/admin/updLezione/{id}",method=RequestMethod.GET)
+    public String getModificaLezione(@PathVariable("id")Long id,Model model) {
+    	
+    	model.addAttribute("lezione", this.lezioneService.lezionePerId(id));
+    	model.addAttribute("corsi", this.lezioneService.getCorsoService().tutti());
+    	model.addAttribute("insegnanti", this.lezioneService.getInsegnanteService().tutti());
+        return"/updLezione";
+    }
+
+    @RequestMapping(value="/admin/updLezione/{id}",method=RequestMethod.POST)
+    public String modificaLezione(@ModelAttribute("lezione")Lezione lezione, Model model, BindingResult bindingResult)
+    {
+        this.modificaLezioneValidator.validate(lezione, bindingResult);
+        if(!bindingResult.hasErrors()) {
+        	this.lezioneService.inserisci(lezione);
+            return"redirect:/lezione";
+        }
+        return"redirect:/default";
     }
 
 }

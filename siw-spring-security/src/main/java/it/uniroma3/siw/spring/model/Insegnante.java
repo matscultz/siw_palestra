@@ -50,4 +50,12 @@ public class Insegnante {
 	
 	@ManyToOne
 	private Corso corso;
+
+	@Override
+	public String toString() {
+		return "Insegnante [id=" + id + ", nome=" + nome + ", cognome=" + cognome + ", email=" + email + ", photos="
+				+ photos + "]";
+	}
+	
+	
 }

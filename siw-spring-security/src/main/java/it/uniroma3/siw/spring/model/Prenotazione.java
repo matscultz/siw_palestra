@@ -23,7 +23,7 @@ public class Prenotazione {
 	@ManyToOne
 	private User cliente;
 	
-	@OneToOne
+	@ManyToOne
 	private Lezione lezione;
 
 }

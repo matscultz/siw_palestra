@@ -45,7 +45,7 @@ public class InsegnanteController {
     @RequestMapping(value="/admin/insegnante", method = RequestMethod.GET)
     public String addInsegnante(Model model) {
     	model.addAttribute("insegnante", new Insegnante());
-    //	model.addAttribute("corsi",this.insegnanteService.getCorsoService().tutti());
+    	model.addAttribute("corsi",this.insegnanteService.getCorsoService().tutti());
         return "insegnanteForm";
     }
 
@@ -54,7 +54,7 @@ public class InsegnanteController {
     	//model.addAttribute("insegnante", this.insegnanteService.insegnantePerId(id));
     	Insegnante insegnante = this.insegnanteService.insegnantePerId(id);
     	model.addAttribute("insegnante", insegnante);
-    	/* model.addAttribute("corso", this.corsoService.corsoPerId(id)); */
+    	// model.addAttribute("corso", this.corsoService.corsoPerId(id));
     	model.addAttribute("lezioni", insegnante.getLezioni());
     	
     	return "insegnante";
@@ -65,9 +65,10 @@ public class InsegnanteController {
     		model.addAttribute("insegnanti", this.insegnanteService.tutti());
     		return "insegnanti";
     }
+    
     @PostMapping("/insegnantiSave")
     public String saveInsegnante(@ModelAttribute Insegnante insegnante,
- Model model ,      @RequestParam("image") MultipartFile multipartFile, BindingResult bindingResult) throws IOException {
+    			Model model, @RequestParam("image") MultipartFile multipartFile, BindingResult bindingResult) throws IOException {
         if(!bindingResult.hasErrors()) { 
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         insegnante.setPhotos(fileName);

@@ -3,6 +3,7 @@ package it.uniroma3.siw.spring.model;
 import java.time.LocalDate;
 
 import java.time.LocalTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -34,8 +36,6 @@ public class Lezione {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate data;
 	
-	
-	
 	@Column(nullable = false)
 	@DateTimeFormat(pattern = "HH:mm")
 	private LocalTime orario;
@@ -46,6 +46,6 @@ public class Lezione {
 	@ManyToOne
 	private Corso corso;
 		
-	@OneToOne
-	private Prenotazione prenotazione;
+	@OneToMany(mappedBy = "lezione")
+	private List<Prenotazione> prenotazioni;
 }

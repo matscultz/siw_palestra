@@ -13,7 +13,7 @@ import it.uniroma3.siw.spring.service.LezioneService;
 
 
 @Component
-public class LezioneValidator implements Validator {
+public class modificaLezioneValidator implements Validator {
 	@Autowired
 	private LezioneService lezioneService;
 	
