@@ -5,12 +5,15 @@
 	<header th:replace="fragments/base.html :: intestazione"></header>
     <div>
     	<h4  class="t1"></h4>
+    	<div>
+		<img th:src="@{${insegnante.photosImagePath}}" width="120" height="168"
+			alt="">
+	</div> 
     	
     	<div class="t2" th:if="${insegnante}" th:object="${insegnante}">
 			<span th:text="*{nome}">qui-va-nome</span>
 			<span th:text="*{cognome}">qui-va-cognome</span>
 			<span th:text="*{email}">qui-va-email</span>
-			<span th:text="*{corso.nome}">qui-va-il-corso</span>
    		</div>
    		<!-- <ul>
                <li th:each="lezione : ${insegnante.lezioni}">

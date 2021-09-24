@@ -1,5 +1,7 @@
 package it.uniroma3.siw.spring.controller;
 
+import java.io.IOException;
+
 import org.hibernate.annotations.common.util.impl.LoggerFactory;
 
 //import org.slf4j.Logger;
@@ -7,14 +9,20 @@ import org.hibernate.annotations.common.util.impl.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import it.uniroma3.siw.FileUploadUtil;
 import it.uniroma3.siw.spring.controller.validator.InsegnanteValidator;
 import it.uniroma3.siw.spring.model.Insegnante;
+import it.uniroma3.siw.spring.repository.InsegnanteRepository;
 import it.uniroma3.siw.spring.service.CorsoService;
 import it.uniroma3.siw.spring.service.InsegnanteService;
 import it.uniroma3.siw.spring.model.Corso;
@@ -28,13 +36,15 @@ public class InsegnanteController {
     @Autowired
     private InsegnanteValidator insegnanteValidator;
 
+    @Autowired
+    private InsegnanteRepository insegnanteRepository;
   
    // private final Logger logger = LoggerFactory.getLogger(this.getClass());
         
     @RequestMapping(value="/admin/insegnante", method = RequestMethod.GET)
     public String addInsegnante(Model model) {
     	model.addAttribute("insegnante", new Insegnante());
-    	model.addAttribute("corsi",this.insegnanteService.getCorsoService().tutti());
+    //	model.addAttribute("corsi",this.insegnanteService.getCorsoService().tutti());
         return "insegnanteForm";
     }
 
@@ -48,6 +58,25 @@ public class InsegnanteController {
     public String getInsegnanti(Model model) {
     		model.addAttribute("insegnanti", this.insegnanteService.tutti());
     		return "insegnanti";
+    }
+    @PostMapping("/insegnantiSave")
+    public String saveInsegnante(@ModelAttribute Insegnante insegnante,
+ Model model ,      @RequestParam("image") MultipartFile multipartFile, BindingResult bindingResult) throws IOException {
+        if(!bindingResult.hasErrors()) { 
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        insegnante.setPhotos(fileName);
+         
+       Insegnante savedInsegnante = insegnanteRepository.save(insegnante);
+ 
+        String uploadDir = "insegnante-photos/" + savedInsegnante.getId();
+ 
+        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+        model.addAttribute("insegnanti", this.insegnanteService.tutti());
+        
+        return "insegnanti";}
+        
+        else
+        	return "insegnanteForm";
     }
     
     @RequestMapping(value = "/admin/insegnante", method = RequestMethod.POST)

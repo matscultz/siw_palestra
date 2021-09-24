@@ -1,5 +1,6 @@
 package it.uniroma3.siw.spring.model;
 
+import java.beans.Transient;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -32,6 +33,17 @@ public class Insegnante {
 	
 	@OneToMany(mappedBy = "insegnante")
 	private List<Lezione> lezioni;
+	
+	
+	 @Column(nullable = true, length = 64)
+	    private String photos;
+	
+	 @Transient
+	    public String getPhotosImagePath() {
+	        if (photos == null || id == null) return null;
+	         
+	        return "/insegnante-photos/" + id + "/" + photos;
+	    }
 	
 	/* @ManyToMany(mappedBy = "insegnanti")
 	private List<Corso> corsi; */

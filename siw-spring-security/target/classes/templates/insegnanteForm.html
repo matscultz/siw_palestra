@@ -8,7 +8,7 @@
 	<div>
 		<h4 class="t1">Inserisci i dati di un insegnante</h4>
 	</div>
-	<form th:action="@{/admin/insegnante}" method="POST" th:object="${insegnante}">
+	<form th:action="@{/insegnantiSave}" method="POST" th:object="${insegnante}" enctype="multipart/form-data">
 		<div th:if="${#fields.hasGlobalErrors()}">
   			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 		</div>		
@@ -28,6 +28,12 @@
 				<span><input type="text" th:field="*{email}" /></span>
 				<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
 			</div>
+					<div>
+
+						<label>Photos: </label> <input type="file" name="image"
+							accept="image/png, image/jpeg" />
+
+					</div>
 			<!-- <div>
 				<span>Corso: </span> 
 				<select id="corso" th:field="*{corso}" required>
