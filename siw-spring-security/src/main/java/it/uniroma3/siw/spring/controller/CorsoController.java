@@ -20,7 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
-import it.uniroma3.siw.FileUploadUtil;
+import it.uniroma3.siw.FileUploadApplication;
+
 import it.uniroma3.siw.spring.controller.validator.CorsoValidator;
 import it.uniroma3.siw.spring.model.Corso;
 import it.uniroma3.siw.spring.model.User;
@@ -61,7 +62,7 @@ public class CorsoController {
  
         String uploadDir = "corso-photos/" + savedCorso.getId();
  
-        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+        FileUploadApplication.saveFile(uploadDir, fileName, multipartFile);
         model.addAttribute("corsi", this.corsoService.tutti());
         
         return "corsi";}

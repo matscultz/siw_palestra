@@ -19,7 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import it.uniroma3.siw.FileUploadUtil;
+import it.uniroma3.siw.FileUploadApplication;
+
 import it.uniroma3.siw.spring.controller.validator.InsegnanteValidator;
 import it.uniroma3.siw.spring.model.Insegnante;
 import it.uniroma3.siw.spring.repository.InsegnanteRepository;
@@ -50,7 +51,12 @@ public class InsegnanteController {
 
     @RequestMapping(value = "/insegnante/{id}", method = RequestMethod.GET)
     public String getInsegnante(@PathVariable("id") Long id, Model model) {
-    	model.addAttribute("insegnante", this.insegnanteService.insegnantePerId(id));
+    	//model.addAttribute("insegnante", this.insegnanteService.insegnantePerId(id));
+    	Insegnante insegnante = this.insegnanteService.insegnantePerId(id);
+    	model.addAttribute("insegnante", insegnante);
+    	/* model.addAttribute("corso", this.corsoService.corsoPerId(id)); */
+    	model.addAttribute("lezioni", insegnante.getLezioni());
+    	
     	return "insegnante";
     }
 
@@ -70,7 +76,7 @@ public class InsegnanteController {
  
         String uploadDir = "insegnante-photos/" + savedInsegnante.getId();
  
-        FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
+        FileUploadApplication.saveFile(uploadDir, fileName, multipartFile);
         model.addAttribute("insegnanti", this.insegnanteService.tutti());
         
         return "insegnanti";}
