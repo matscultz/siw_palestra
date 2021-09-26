@@ -1,5 +1,6 @@
 package it.uniroma3.siw.spring.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.siw.spring.model.Corso;
+import it.uniroma3.siw.spring.model.Insegnante;
+import it.uniroma3.siw.spring.model.Lezione;
 import it.uniroma3.siw.spring.repository.CorsoRepository;
 
 @Service
@@ -76,4 +79,21 @@ public class CorsoService {
 	public CorsoService getCorsoService() {
 		return this.corsoService;
 	}
+	
+	@Transactional
+    public List<Lezione> lezioniCorso(Long id){
+        Optional<Corso> corso = corsoRepository.findById(id);
+        List<Lezione> lezione = new ArrayList<>();
+        Corso corsi = corso.get();
+        lezione = corsi.getLezioni();
+        return lezione;
+    }
+
+    @Transactional
+    public List<Insegnante> insegnantiCorso(Long id){
+        Optional<Corso> corso = corsoRepository.findById(id);
+        List<Insegnante> insegnanti= new ArrayList<>();
+        Corso corsi = corso.get();
+        return insegnanti = corsi.getInsegnanti();
+    }
 }
