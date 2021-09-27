@@ -24,7 +24,6 @@ import it.uniroma3.siw.FileUploadApplication;
 
 import it.uniroma3.siw.spring.controller.validator.CorsoValidator;
 import it.uniroma3.siw.spring.model.Corso;
-import it.uniroma3.siw.spring.model.Lezione;
 import it.uniroma3.siw.spring.model.User;
 import it.uniroma3.siw.spring.repository.CorsoRepository;
 import it.uniroma3.siw.spring.service.CorsoService;
@@ -117,23 +116,6 @@ public class CorsoController {
     	model.addAttribute("lezioni",this.lezioneService.getLezioneService().tutti());
 
         return "corsoFormMod.html";
-    }
-    
-    @RequestMapping(value="/admin/corso/{id}/lezione", method= RequestMethod.GET)
-    public String AdminAddLezioneCorso(@PathVariable("id")Long id, Model model) {
-        model.addAttribute("insegnanti", this.corsoService.insegnantiCorso(id));
-        model.addAttribute("lezione",new Lezione());
-        model.addAttribute("corso", this.corsoService.corsoPerId(id));
-        return "lezioneForm";
-    }
-
-    @RequestMapping(value="/admin/corso/{id}/lezione", method= RequestMethod.POST)
-    public String AdminAddLezioneCorsoPost(@ModelAttribute("lezione") Lezione lezione, @PathVariable("id")Long id, Model model ) {
-        Corso corso=this.corsoService.corsoPerId(id);
-        corso.getLezioni().add(lezione);
-        lezione.setCorso(corso);
-        this.lezioneService.inserisci(lezione);
-        return "redirect:/corso/"+id;
     }
 
     
