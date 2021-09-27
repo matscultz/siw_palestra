@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/base.html :: headerfiles(title='Registra Utente')"> </head>
+<head th:replace="fragments/baseadmin.html :: headerfiles(title='Registra Utente')"> </head>
 <body>
-	<header th:replace="fragments/base.html :: intestazione"></header>
+	<header th:replace="fragments/baseadmin.html :: intestazione"></header>
 	<div>
     	<h4 th:text="#{header.registra}">Registrazione</h4>
 	<form th:action="@{/admin/register}" method="POST">

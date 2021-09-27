@@ -2,11 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head th:replace="fragments/baseadmin.html :: headerfiles(title='ADMIN')"> </head>
 <body>
-	<header th:replace="fragments/baseadmin.html :: intestazione"></header>
+	
     <div>
-    	<div th:replace="fragments/baseadmin.html :: navbar"></div>
+    	<div th:replace="fragments/baseadmin.html :: nav"></div>
     	<h4 th:text="#{header.menuAdmin}">Menu</h4>
-		<div>
+		<!-- <div>
 			<a th:href="@{/corso}">Elenco corsi</a>
    		</div>
    		<div>
@@ -15,7 +15,7 @@
    		<div>
 			<a th:href="@{/insegnante}">Elenco insegnanti</a>
    		</div>
-   		<div>
+   		<div -->
 			<a th:href="@{/admin/corso}">Inserisci dati corso</a>
    		</div>
    		<div>
@@ -32,6 +32,6 @@
 			<a th:href="@{/logout}">Logout</a>
    		</div>
     </div>
-    <footer th:replace="fragments/base.html :: fondo(home='/default')"></footer>
+    
 </body>
 </html>

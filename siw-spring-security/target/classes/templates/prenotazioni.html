@@ -2,7 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/base.html :: headerfiles(title=#{header.prenotazioni})"> </head>
 <body>
-	<header th:replace="fragments/base.html :: intestazione"></header>
+		<div th:if="${session.role}=='ADMIN'">
+		<header th:replace="fragments/baseadmin.html :: intestazione"></header>
+	</div>
+	<div th:unless="${session.role}=='ADMIN'">
+		<header th:replace="fragments/base.html :: intestazione"></header>
+	</div>
 	<div>
     	<h4 th:text="#{header.prenotazioni}">Lista delle prenotazioni</h4>
 		<ul>

@@ -2,7 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.insegnante})"> </head>
 <body>
-	<header th:replace="fragments/base.html :: intestazione"></header>
+	<div th:if="${role}=='ADMIN'">
+		<header th:replace="fragments/baseadmin.html :: intestazione"></header>
+	</div>
+	<div th:unless="${role}=='ADMIN'">
+		<header th:replace="fragments/base.html :: intestazione"></header>
+	</div>
     <div>
     	<h4  class="t1"></h4>
     	<div>

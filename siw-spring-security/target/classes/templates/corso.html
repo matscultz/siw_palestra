@@ -4,10 +4,10 @@
 	th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.corso})">
 </head>
 <body>
-		<div th:if="${role}=='ADMIN'">
+			<div th:if="${session.role}=='ADMIN'">
 		<header th:replace="fragments/baseadmin.html :: intestazione"></header>
 	</div>
-	<div th:unless="${role}=='ADMIN'">
+	<div th:unless="${session.role}=='ADMIN'">
 		<header th:replace="fragments/base.html :: intestazione"></header>
 	</div>
 	<div></div>
