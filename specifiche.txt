@@ -1,0 +1,55 @@
+Caso d'uso UC1: consulta offerta
+Attore primario: utente non registrato
+Scenario principale di successo: 
+L'utente consulta l'elenco dei corsi.
+L'utente sceglie un corso e ne richiede i dettagli 
+Il sistema mostra i dettagli del corso
+L'utente ripete i passi precedenti un numero indefinito di volte
+
+Caso d'uso UC2: crea lezione
+Attore primario: amministrazione
+Scenario principale di successo: 
+L'ammistrazione crea una lezione
+L'amministrazione associa un corso e un insegnante alla lezione creata
+Il sistema registra la lezione
+Precondizioni: l'amministratore è identificato e autenticato
+
+
+Caso d'uso UC3: utente si prenota ad una lezione
+Attore primario: paziente
+Scenario principale:
+Il cliente consulta l'elenco dei corsi e seleziona un corso
+Il sistema mostra al cliente l'elenco delle lezioni del corso
+Il cliente chiede il dettaglio di una lezione
+Il sistema mostra il dettaglio della lezione
+Il cliente si prenota alla lezione
+Il sistema associa la prenotazione al cliente e alla lezione selezionata
+Precondizioni: il cliente è identificato e autenticato
+
+Caso d'uso UC4: consulta le proprie prenotazioni e cancella prenotazione
+Attore primario: paziente
+Scenario principale:
+Il cliente consulta l'elenco delle proprie prenotazioni
+Il sistema mostra al cliente l'elenco delle sue prenotazioni
+Il cliente chiede il dettaglio della prenotazione
+Il sistema mostra il dettaglio della prenotazione
+[Il cliente cancella la sua prenotazione]
+Il cliente ripete i passi precedenti finché necessario
+Precondizioni: il cliente è identificato e autenticato
+
+Caso d'uso UC5: registrazione nuovo cliente
+Attore primario: amministrazione
+Scenario principale:
+L'amministratore inserisce i dati di un nuovo cliente
+Il sistema registra il cliente
+I punti precedenti vengono ripetuti fino a che necessario
+Precondizioni: l'amministratore è identificato e autenticato
+
+
+Caso d'uso UC6/UC7: inserimento corso/insegnante
+Attore primario: amministrazione
+Scenario principale di successo: 
+L'ammistrazione crea un corso/un insegnante
+[Ad ogni insegnante viene associato un corso]
+Il sistema registra il corso/l'insegnante
+Precondizioni: l'amministratore è identificato e autenticato
