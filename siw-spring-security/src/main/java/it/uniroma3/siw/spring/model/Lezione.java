@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -46,6 +47,6 @@ public class Lezione {
 	@ManyToOne
 	private Corso corso;
 		
-	@OneToMany(mappedBy = "lezione")
+	@OneToMany(mappedBy = "lezione", cascade = CascadeType.REMOVE)
 	private List<Prenotazione> prenotazioni;
 }

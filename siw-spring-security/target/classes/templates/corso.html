@@ -39,7 +39,7 @@
 			</div></li>
 	</div>
 	<div th:unless="${corso}">Non esiste</div>
-	<div th:if="${#authorization.expression('isAuthenticated()')}">
+	<!-- <div th:if="${#authorization.expression('isAuthenticated()')}">
 		<div>
 			<form action="#" th:object="${corso}"
 				th:action="@{/admin/modCorso/{id}(id=${corso.id})}" th:method="post">
@@ -53,7 +53,7 @@
 				<a class="btn" th:href="@{'/admin/corso' + '/' + ${corso.id}}">elimina</a>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<div th:unless="${#authorization.expression('isAuthenticated()')}">
 	</div>
 

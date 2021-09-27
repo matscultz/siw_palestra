@@ -71,6 +71,8 @@ public class LezioneController {
         }
         return "lezioneForm";
     }
+    
+    
     @RequestMapping(value="/admin/lezione/{id}", method= RequestMethod.GET)
     public String deleteLezione(@PathVariable("id")Long id, Model model) {
     		this.lezioneService.deletedLezione(id);

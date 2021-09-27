@@ -28,13 +28,6 @@
    		
 
     	<div th:unless="${lezione}">Non esiste</div>
-    	<div th:if="${#authorization.expression('isAuthenticated()')}"> 
-        <div>
-            <form action="#" th:object="${lezione}" th:action="@{/admin/updLezione/{id} (id=*{id})}">
-            <input type="hidden" name="_method" value="#">
-              <button type="submit" id="submitButton">Aggiorna i dati</button>
-            </form>
-             </div> 
             <br>
           <div><div th:if="${session.role}=='ADMIN'">
     		<a class="btn" th:href="@{'/admin/lezione' + '/' + ${lezione.id}}">elimina</a></div>
