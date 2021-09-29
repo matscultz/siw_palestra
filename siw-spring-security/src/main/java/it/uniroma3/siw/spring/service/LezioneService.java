@@ -84,4 +84,9 @@ public class LezioneService {
 			return false;
 		}
 	}
+
+	@Transactional
+	public List<Lezione> listaLezioni(Long id) {
+		return (List<Lezione>) this.lezioneRepository.lezioniOrdinate(id);
+	}
 }

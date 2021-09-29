@@ -77,7 +77,7 @@ public class CorsoController {
     	Corso corso = this.corsoService.corsoPerId(id);
     	model.addAttribute("corso", corso);
     	/* model.addAttribute("corso", this.corsoService.corsoPerId(id)); */
-    	model.addAttribute("lezioni", corso.getLezioni());
+    	model.addAttribute("lezioni", this.lezioneService.listaLezioni(id));
     	model.addAttribute("insegnanti", this.insegnanteService.tutti());
     	return "corso";
     }
