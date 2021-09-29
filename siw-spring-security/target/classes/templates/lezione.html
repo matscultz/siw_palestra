@@ -10,24 +10,22 @@
 		<header th:replace="fragments/base.html :: intestazione"></header>
 	</div>
 	</div>
-    	<h4 class="t1"></h4>
-    	
-    	<div class="t2" th:if="${lezione}" th:object="${lezione}">
-			<span th:text="*{durata}">qui-va-durata</span>
-			<span th:text="*{data}">qui-va-data</span>
-			<span th:text="*{orario}">qui-va-orario</span>
-			<!-- <span th:text="*{insegnante}">qui-va-insegnante</span> -->
-			<
-			<span th:text="*{corso.nome}">qui-va-corso</span>
-			<form th:action="@{/lezione/{id} (id=*{id})}" method="POST" th:object="${lezione}">
-        		<div>
-               <div th:if="${session.role}=='DEFAULT'">    <span><button type="submit">PRENOTA</button></span></div>
+	<div>
+    	<div class="container-lezione">
+    	<div th:if="${lezione}" th:object="${lezione}">
+    	<p id="lezione-descrizione">Lezione di <span th:text="*{corso.nome}">qui-va-corso</span> del <span th:text="*{data}">qui-va-data</span>
+    	alle ore <span th:text="*{orario}">qui-va-orario</span> della durata di <span th:text="*{durata}">qui-va-durata</span>
+    	 minuti.</p>
+			<form class="form-lezione" th:action="@{/lezione/{id} (id=*{id})}" method="POST" th:object="${lezione}">
+        		<div>   
+               <div th:if="${session.role}=='DEFAULT'">    
+               <span><button class="button-prenota" type="submit">PRENOTA</button></span></div>
                   <div><br><br></div>
        	 		</div>
         	</form> 
-   		</div>
-   		
-
+        </div>
+    </div>
+   		 
     	<div th:unless="${lezione}">Non esiste</div>
             <br>
           <div><div th:if="${session.role}=='ADMIN'">
@@ -35,6 +33,6 @@
     	  </div>
              </div>
              <div th:unless="${#authorization.expression('isAuthenticated()')}"> </div>
- 
+ </div>
 </body>
 </html>

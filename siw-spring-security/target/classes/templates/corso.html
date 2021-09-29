@@ -18,9 +18,7 @@
 	</div> -->
 
 	<div class="t2" th:if="${corso}" th:object="${corso}">
-		<span th:text="*{nome}">qui-va-nome</span> <span
-			th:text="*{descrizione}">qui-va-cognome</span>
-
+		<h4 class="titolo-pagina" th:text="*{nome}">qui-va-nome</h4>
 	</div>
 	<div th:unless="${corso}">Non esiste</div>
 	<div th:unless="${#authorization.expression('isAuthenticated()')}">
@@ -44,7 +42,7 @@
         <td th:text="${lezione.durata}"></td>
         <td width="100px" th:text="${lezione.data}"></td>
         <td th:text="${lezione.orario}"></td>
-        <td th:text="${lezione.insegnante}"></td>
+       <!-- <td th:text="|${lezione.insegnante.nome} ${lezione.insegnante.cognome}|"></td> -->
        </tr>
      </tbody>
     </table>

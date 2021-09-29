@@ -640,6 +640,55 @@ tr:nth-child(even) {background-color: aliceblue;}
 	color: gray;
 }
 
+.container-lezione {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	margin: 50px 50px 0;
+	width: auto;
+	height: auto;
+	background-color: aliceblue;
+	border-radius: 10px;
+	padding-top: 30px;
+}
+
+.form-lezione {
+	background-color: aliceblue;
+}
+
+.lezione-oggetto {
+	float: left;
+	display: flex;
+	width: 50%;
+	align-items: center;
+}
+
+.button-prenota {
+  font-size: 12px;
+  font-weight: 500;
+  color: #a5c0e5;
+  letter-spacing: 2px;
+  padding: 10px 10px;
+  outline: 0;
+  border-radius: 5px;
+  border: 2px solid #a5c0e5;
+  cursor: pointer;
+  position: relative;
+  background-color: aliceblue;
+  align-items: center;
+  left: 300px;
+}
+
+#lezione-descrizione {
+	color: black;
+	letter-spacing: 2px;
+	font-size: 20px;
+}
+.riga-lezione {
+	display: flex;
+	flex-direction: row;
+}
 .elimina {
 	padding-top: 10px;
 }
@@ -654,4 +703,8 @@ tr:nth-child(even) {background-color: aliceblue;}
 	font-size: 28px;
 	margin-top: 30px;
 	margin-bottom: 20px;
+}
+
+.formlezioneprenota {
+	background-color: aliceblue;
 }
