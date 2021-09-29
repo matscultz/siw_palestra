@@ -32,5 +32,8 @@
 			</div>
 	</div>
 	</div>
+	<div th:if="${session.role}=='DEFAULT'">
+	<footer th:replace="fragments/baseutente.html :: fondo('/default')"></footer>
+	</div>
 </body>
 </html>

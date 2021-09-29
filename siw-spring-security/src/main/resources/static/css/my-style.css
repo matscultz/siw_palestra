@@ -130,6 +130,22 @@ ul li a{
 .imm-centrata {
 	vertical-align: middle;
 }
+
+.lista-lezioni {
+	display: flex;
+	flex-direction: column;
+}
+
+.riga-lezioni {
+	display: flex;
+	flex-direction: row;
+	margin: 10px;
+}
+
+.riga-lezioni #lezione {
+	color: gray;
+	text-decoration: gray;
+}
 /*---contact---*/
 
 .contatti {
@@ -538,9 +554,18 @@ form input{
 }
 
 
+.tabella-prenotazioni {
+	border-collapse: collapse;
+	width: 80%;
+	margin: auto;
+	margin-top: 50px;
+
+	
+}
+
 th, td {
   padding: 15px;
-  text-align: left;
+  text-align: center;
 }
 
 b {
@@ -702,6 +727,25 @@ tr:nth-child(even) {background-color: aliceblue;}
   left: 300px;
 }
 
+.container-elimina {
+	display: flex;
+	height: auto;
+	width: 65%;
+	justify-content: center;
+	align-items: center;
+}
+.button-elimina {
+	display: flex;
+  font-size: 12px;
+  font-weight: 500;
+  color: #a5c0e5;
+  letter-spacing: 2px;
+  padding: 10px 10px;
+  outline: 0;
+  border-radius: 5px;
+  border: 2px solid #a5c0e5;
+  background-color: aliceblue;
+}
 #lezione-descrizione {
 	color: black;
 	letter-spacing: 2px;
@@ -729,4 +773,22 @@ tr:nth-child(even) {background-color: aliceblue;}
 
 .formlezioneprenota {
 	background-color: aliceblue;
+}
+
+.prenotazioni {
+	height: 600px;
+}
+
+.footer-user {
+	margin: 50px;
+}
+
+#lezione-id {
+	color: black;
+	text-decoration: none;
+}
+
+#elimina-prenotazione {
+	color: rgb(165, 193, 234);
+	letter-spacing: 2.5px;
 }

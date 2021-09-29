@@ -52,7 +52,7 @@ public class PrenotazioneController {
 	    	UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             Credentials credentials = this.credentialsService.getCredentials(userDetails.getUsername());
             User cliente = credentials.getUser();
-            model.addAttribute("prenotazioni", this.prenotazioneService.listaPUtente(cliente.getId()));
+            model.addAttribute("prenotazioni", this.prenotazioneService.prenotazioniOrdinate(cliente.getId()));
 	    	return "prenotazioni";
 	    }
 	    

@@ -10,20 +10,36 @@
 		<header th:replace="fragments/base.html :: intestazione"></header>
 	</div>
 	</div>
-	<div>
-    	<h4 class="home-text">Le mie prenotazioni</h4>
-		<ul>
-			<li th:each="prenotazione : ${prenotazioni}">
-				<a href="prenotazione.html" 
-				   th:href="@{'/prenotazione' + '/' + ${prenotazione.id}}" 
-				   th:text="${prenotazione.id}">Yoga</a> 
-				   <br>
-				   <div><div th:if="${session.role}=='DEFAULT'">
-    		<a class="btn" th:href="@{'/prenotazioneDelete' + '/' + ${prenotazione.id}}">elimina</a></div>
-    	  </div>
-			</li>
-		</ul>
-	</div>
-	<!-- <footer th:replace="fragments/base.html :: fondo('/default')"></footer> -->
+	<table border="0" class="tabella-prenotazioni">
+    
+    <thead class="ttop">
+        <tr class="table-info">
+            <td width="20px"><b>N° PRENOTAZIONE</b></td>
+            <td><b>LEZIONE</b> </td>
+            <td><b>DATA</b> </td>
+            <td><b>ORARIO</b> </td>
+            <td><b>DURATA (minuti)</b> </td>
+            <td><b>INSEGNANTE</b> </td>
+            <td><b>CORSO</b> </td>
+            <td><b></b> </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="prenotazione, iStat : ${prenotazioni}" th:style="${iStat.odd}? 'font-weight: normal;'" th:href="@{'/prenotazione' + '/' + ${prenotazione.id}}">
+        
+        <td width="200px"> <a id="lezione-id" th:href="@{'/prenotazione' + '/' + ${prenotazione.id}}" th:text="${prenotazione.id}"</a></td>
+        <td th:text="${prenotazione.lezione.nome}"></td>
+        <td th:text="${prenotazione.lezione.data}"></td>
+        <td th:text="${prenotazione.lezione.orario}"></td>
+        <td th:text="${prenotazione.lezione.durata}"></td>
+        <td th:text="|${prenotazione.lezione.insegnante.nome} ${prenotazione.lezione.insegnante.cognome}"></td>
+        <td th:text="${prenotazione.lezione.corso.nome}"></td>
+        <td <div th:if="${session.role}=='DEFAULT'">
+    		<a id="elimina-prenotazione" class="btn" th:href="@{'/prenotazioneDelete' + '/' + ${prenotazione.id}}">elimina</a></div>
+    	  </td>
+       </tr>
+     </tbody>
+    </table>
+	<footer th:replace="fragments/baseutente.html :: fondo('/default')"></footer>
 </body>
 </html>

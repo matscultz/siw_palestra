@@ -41,10 +41,10 @@ public class Corso {
 	/* @ManyToMany
 	private List<Insegnante> insegnanti; */
 	
-	@OneToMany(mappedBy="corso",cascade= {CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
+	@OneToMany(mappedBy="corso",cascade= CascadeType.REMOVE)
 	private List<Insegnante> insegnanti;
 	
-	@OneToMany(mappedBy = "corso")
+	@OneToMany(mappedBy = "corso", cascade = CascadeType.REMOVE)
 	private List<Lezione> lezioni;
 
 	@Override

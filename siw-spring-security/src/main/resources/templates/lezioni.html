@@ -2,17 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/base.html :: headerfiles(title=#{header.lezioni})"> </head>
 <body>
-	<div th:if="${session.role}=='ADMIN'">
+	<div class="hero" th:if="${session.role}=='ADMIN'">
 		<header th:replace="fragments/baseadmin.html :: intestazione"></header>
 	</div>
 	<div th:unless="${session.role}=='ADMIN'">
 		<header th:replace="fragments/base.html :: intestazione"></header>
 	</div>
 	<div>
-    	<h4 class="t1" >Lista di lezioni</h4>
-		<ul>
-			<li class="t5" th:each="lezione : ${lezioni}">
-				<a href="lezioni.html" 
+    	<h4 class="home-text">Lezioni</h4>
+		<ul class="lista-lezioni">
+			<li class="riga-lezioni" th:each="lezione : ${lezioni}">
+				<a id="lezione" href="lezioni.html" 
 				   th:href="@{'/lezione' + '/' + ${lezione.id}}" 
 				   th:text="|${lezione.nome} ${lezione.data} ${lezione.durata} ${lezione.orario}|"></a>
 				   <div><div th:if="${session.role}=='ADMIN'">

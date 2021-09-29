@@ -28,10 +28,10 @@
    		 
     	<div th:unless="${lezione}">Non esiste</div>
             <br>
-          <div><div th:if="${session.role}=='ADMIN'">
-    		<a class="btn" th:href="@{'/admin/lezione' + '/' + ${lezione.id}}">elimina</a></div>
+          <div ><div class="container-elimina" th:if="${session.role}=='ADMIN'">
+    		<a class="button-prenota" th:href="@{'/admin/lezione' + '/' + ${lezione.id}}">elimina</a></div>
     	  </div>
-             </div>
+     
              <div th:unless="${#authorization.expression('isAuthenticated()')}"> </div>
  </div>
 </body>

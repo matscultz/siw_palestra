@@ -76,6 +76,11 @@ public class PrenotazioneService {
         User cliente = credentials.getUser();
 		return cliente.getPrenotazioni();
 	}
+
+	@Transactional
+	public List<Prenotazione> prenotazioniOrdinate(Long id) {
+		return this.prenotazioneRepository.prenotazioniOrdinate(id);
+	}
 	
 	
 	/* @Transactional
