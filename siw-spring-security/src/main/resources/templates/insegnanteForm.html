@@ -4,45 +4,45 @@
 <body>
 	<header th:replace="fragments/baseadmin.html :: intestazione"></header>
 	<div class="container">
-			<div class="myform">
-	<div>
-		<h4 class="t1">Inserisci i dati di un insegnante</h4>
-	</div>
-	<form th:action="@{/insegnantiSave}" method="POST" th:object="${insegnante}" enctype="multipart/form-data">
-		<div th:if="${#fields.hasGlobalErrors()}">
-  			<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
-		</div>		
-		<div>
+		<div class="myform">
+			<div class="inserisci-text">
+				<p class="t1">Inserisci i dati di un insegnante</p>
+			</div>
+			<form class="formform" th:action="@{/insegnantiSave}" method="POST" th:object="${insegnante}" enctype="multipart/form-data">
+				<div th:if="${#fields.hasGlobalErrors()}">
+  					<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
+				</div>		
+			<div>
 			<div>
 				<span>Nome:</span>
-				<span><input type="text" th:field="*{nome}" /></span>
+				<span><input class="inputform" type="text" th:field="*{nome}" /></span>
 				<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
 			</div>		
 			<div>
 				<span>Cognome:</span>
-				<span><input type="text" th:field="*{cognome}" /></span>
+				<span><input class="inputform" type="text" th:field="*{cognome}" /></span>
 				<span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span>
 			</div>
 			<div>
 				<span>Email:</span>
-				<span><input type="text" th:field="*{email}" /></span>
+				<span><input class="inputform" type="text" th:field="*{email}" /></span>
 				<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
 			</div>
 					<div>
 
-						<label>Photos: </label> <input type="file" name="image"
+						<label>Photos: </label> <input class="inputform" type="file" name="image"
 							accept="image/png, image/jpeg" />
 
 					</div>
 			<div>
-				<span>Corso: </span> 
-				<select id="corso" th:field="*{corso}" required>
+				<span >Corso: </span> 
+				<select class="select-form" id="corso" th:field="*{corso}" required>
 				<option th:each="corso : ${corsi}"
 						th:value="${corso.id}" th:text="${corso.nome}"></option>
 				</select>
 			</div>
 			<div>
-				<span><button type="submit">Invio</button></span>
+				<span><button class="button-form-insegnante" type="submit">Invio</button></span>
 			</div>
 		</div>
 	</form>

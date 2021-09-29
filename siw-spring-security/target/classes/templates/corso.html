@@ -21,15 +21,6 @@
 			th:text="*{descrizione}">qui-va-cognome</span>
 
 	</div>
-	<!-- <ul>
-               <li th:each="insegnante : ${corso.insegnanti}">
-                <a href="insegnante.html" 
-                   th:href="@{'/insegnante' + '/' + ${insegnante.id}}"
-                   th:text="${insegnante.nome}"
-                   th:text="${insegnante.cognome}"> </a>
-                   <div><br><br></div>
-               </li>
-        </ul> -->
 	<div>
 		<li th:each="lezione : ${lezioni}"><a href="lezione.html"
 			th:href="@{'/lezione' + '/' + ${lezione.id}}"
@@ -39,21 +30,6 @@
 			</div></li>
 	</div>
 	<div th:unless="${corso}">Non esiste</div>
-	<!-- <div th:if="${#authorization.expression('isAuthenticated()')}">
-		<div>
-			<form action="#" th:object="${corso}"
-				th:action="@{/admin/modCorso/{id}(id=${corso.id})}" th:method="post">
-				<input type="hidden" name="_method" value="update">
-				<button type="submit" id="submitButton">Aggiorna i dati</button>
-			</form>
-		</div>
-		<br>
-		<div>
-			<div th:if="${session.role}=='ADMIN'">
-				<a class="btn" th:href="@{'/admin/corso' + '/' + ${corso.id}}">elimina</a>
-			</div>
-		</div>
-	</div> -->
 	<div th:unless="${#authorization.expression('isAuthenticated()')}">
 	</div>
 

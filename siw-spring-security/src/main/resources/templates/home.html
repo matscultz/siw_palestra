@@ -3,17 +3,19 @@
 	<head th:replace="fragments/base.html :: headerfiles(title='SIW')"> </head>
 <body>
 	<header th:replace="fragments/base.html :: intestazione"></header>
-    <div>
-    	<h4 th:text="#{header.menuUtente}">Menu</h4>
-		<div>
-			<li><a href="corso" th:href="@{/corso}">Corsi</a></li>
-			<a href="Le mie prenotazioni" th:href="@{/prenotazione}">Elenco prenotazioni</a>
+	<div class="container2">
+    	<div class="menu">
+    		<h4 class="home-text" th:text="#{header.menuUtente}">Menu</h4>
+			<div>
+				<a class="link" href="corso" th:href="@{/corso}">Corsi</a>
+			</div>
+    		<div>
+				<a class="link" href="Le mie prenotazioni" th:href="@{/prenotazione}">Elenco prenotazioni</a>
+   			</div>
+   			<div class="logout">
+				<a th:href="@{/logout}">Logout</a>
+   			</div>
    		</div>
-   		<div>
-			<a th:href="@{/logout}">Logout</a>
-   		</div>
-   		
-    </div>
-   
+	</div>
 </body>
 </html>

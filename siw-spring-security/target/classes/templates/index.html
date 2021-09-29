@@ -2,6 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head th:replace="fragments/base.html :: headerfiles(title='SIW')">
 	<title>Home</title>
+	<meta name="viewport" content = "width=device-width, initial-scale=1">
+	
+	<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
 	</head>
 <body>
 	
@@ -9,39 +12,99 @@
 	<section>
 	<div class="hero">
 	 	<div th:replace="fragments/base.html :: navbar"></div>
-		<section id="header">
-		<div class="banner">
-			<div class="left-column"
 	</section>
-    <div>
-    	<h4 th:text="#{header.index}">Welcome Page</h4>
-		<div>
-			<a th:href="@{/login}" th:text="#{index.login}">Accedi</a>
-   		</div>
-		<div>
-			<a th:href="@{/register}" th:text="#{index.register}">Registrati</a>
-   		</div>
-		<div>
-			<a href="corso" th:href="@{/corso}">Elenco corsi</a>
-   		</div>
-    </div>
+	<section id="paginaPrincipale">
+		<div class="left">
+			<div class="scritte">
+			<h1> MNC PILATES & WELLNESS </h1>
+			<h2> La cosa importante non è cosa stai facendo,ma come stai eseguendo ciò che fai.(Joseph Pilates)</h2>
+			<p> scopri i nostir coris e i nostri bla bla bla </p>
+			</div>
+		</div>
+		<div class="right">
+			<img class="imm-centrata" src="/images/lezionePilates2.png" height="500px">
+			
+			
+		</div>
+	</section>
+
     </section>
     
     <!-- CONTACT -->
+    <section id="contatti">
+		<div class="container-contatti">
+				<h3>I nostri contatti</h3>
+				<div class="container-contatti-info">
+				    <div class="info">
+					   <span>Indirizzo:</span>
+					   <p>198 West 21th Street, Suite 721 New York NY 10016</p>
+					</div>
+					<div class="info">
+						<span>Email:</span>
+						<a href="mailto:mnc@palestra.it">mnc@palestra.it</a>
+					</div>
+					<div class="info">
+						<span>Telefono:</span>
+						<a href="tel://1234567910">+ 1234567890</a>
+					</div>
+				</div>
+		</div>
+		<div class="social">
+					<h3>Follow us here</h3>
+						<p>
+							<a href="#">Facebook</a>
+							<a href="#">Twitter</a>
+							<a href="#">Instagram</a>
+						</p>
+		</div>
+		</div>
+	</section>
+	
+	<section id="footer">
+		<div class="container-footer">
+		<div class="footer-left-col">
+			<div class="footer-links">
+				<div class="link-title">
+					<h4>Product</h4>
+					<small>Our Plan</small><br>
+					<small>Our Plan</small>
+				</div>
+				<div class="link-title">
+					<h4>About Us</h4>
+					<small>FAQs</small><br>
+					<small>Our Plan</small>
+				</div>				
+				<div class="link-title">
+					<h4>About Us</h4>
+					<small>FAQs</small><br>
+					<small>Our Plan</small>
+				</div>
+				<div class="link-title">
+					<h4>Explore</h4>
+					<small>FAQs</small><br>
+					<small>Our Plan</small>
+				</div>
+			</div>
+		</div>
+		<div class="footer-right-col">
+			<div class="footer-info">
+				<div class="copyright-text">
+					<small>support@mnc.it</small><br>
+					<small>copyright 2021 MNC</small>
+				</div>
+			</div>	
+		</div>
+		</div>
+	</section>
     
-    <section id="contact">
-    	<div class="container contact-row">
-    		<div class="contact-left-column">
-    			<h1>Contatti</h1>
-    			
-    		</div>
-    		<div class="contact-right-column">
-    		</div>
-    	</div>
-    </section>
-    
-    <footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
+    <!-- <footer th:replace="fragments/base.html :: fondo(home='/')"></footer> -->
 </body>
+ <script>
+	var scroll = new SmoothScroll('a[href*="#"]', {
+		speed: 1000000000,
+		speedAsDuration: true
+	});
+</script>
 </html>
 
 

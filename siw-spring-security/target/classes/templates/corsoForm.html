@@ -7,33 +7,33 @@
 	<header th:replace="fragments/baseadmin.html :: intestazione"></header>
 	<div class="container">
 		<div class="myform">
-			<div>
-				<h4 class="t1">Inserisci i dati di un corso</h4>
+			<div class="inserisci-text">
+				<p class="t1">Inserisci i dati di un corso</p>
 			</div>
-			<form th:action="@{/corsiSave}" method="POST" th:object="${corso}"  enctype="multipart/form-data">
+			<form class="formform" th:action="@{/corsiSave}" method="POST" th:object="${corso}"  enctype="multipart/form-data">
 				<div th:if="${#fields.hasGlobalErrors()}">
 					<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 				</div>
 				<div>
 					<div>
-						<span>Nome:</span> <span><input type="text"
+						<span>Nome:</span> <span><input class="inputform" type="text" required
 							th:field="*{nome}" /></span> <span th:if="${#fields.hasErrors('nome')}"
 							th:errors="*{nome}"></span>
 					</div>
 					<div>
-						<span>Descrizione:</span> <span><input type="text"
+						<span>Descrizione:</span> <span><input class="inputform" type="text" required
 							th:field="*{descrizione}" /></span> <span
 							th:if="${#fields.hasErrors('descrizione')}"
 							th:errors="*{descrizione}"></span>
 					</div>
 					<div>
 
-						<label>Photos: </label> <input type="file" name="image"
+						<label>Photos: </label> <input class="inputform" type="file" name="image"
 							accept="image/png, image/jpeg" />
 
 					</div>
 					<div>
-						<span><button type="submit">Invio</button></span>
+						<span><button class="button-form-corso" type="submit">Invio</button></span>
 					</div>
 				</div>
 			</form>

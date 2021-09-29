@@ -10,7 +10,7 @@
 			<div>
 				<h4 class="t1">Inserisci i dati di un utente</h4>
 			</div>
-			<form th:action="@{/admin/user}" method="POST" th:object="${user}">
+			<form class="formform" th:action="@{/admin/user}" method="POST" th:object="${user}">
 				<div th:if="${#fields.hasGlobalErrors()}">
 					<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 				</div>

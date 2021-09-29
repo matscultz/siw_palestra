@@ -7,61 +7,52 @@
 	<header th:replace="fragments/baseadmin.html :: intestazione"></header>
 	<div class="container">
 		<div class="myform">
-			<div>
-				<h4 class="t1">Inserisci i dati di un lezione</h4>
+			<div class="inserisci-text">
+				<p class="t1">Inserisci i dati di un lezione</p>
 			</div>
-			<form th:action="@{/admin/lezione}" method="POST"
+			<form  class="formform" th:action="@{/admin/lezione}" method="POST"
 				th:object="${lezione}">
 				<div th:if="${#fields.hasGlobalErrors()}">
 					<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
 				</div>
 				<div>
 					<div>
-						<span>Nome:</span> <span><input type="text"
+						<span>Nome:</span> <span><input class="inputform" type="text"
 							th:field="*{nome}" /></span> <span th:if="${#fields.hasErrors('nome')}"
 							th:errors="*{nome}"></span>
 					</div>
 
 					<div>
-						<span>Durata:</span> <span><input type="number"
+						<span>Durata:</span> <span><input class="inputform" type="number"
 							th:field="*{durata}" /></span> <span
 							th:if="${#fields.hasErrors('durata')}" th:errors="*{durata}"></span>
 					</div>
 					<div>
-						<span>Orario:</span> <span><input type="time"
+						<span>Orario:</span> <span><input class="inputform" type="time"
 							th:field="*{orario}" /></span> <span th:if="${#fields.hasErrors('orario')}"
 							th:errors="*{orario}"></span>
 					</div>
 					<div>
-						<span>Giorno lezione:</span> <span><input type="date"
+						<span>Giorno lezione:</span> <span><input class="inputform" type="date"
 							th:field="*{data}" /></span> <span th:if="${#fields.hasErrors('data')}"
 							th:errors="*{data}"></span>
 					</div>
 					<div>
 						<span>Corso: </span> 
-						<select id="corso" th:field="*{corso}" required>
+						<select class="select-form" id="corso" th:field="*{corso}" required>
 						<option th:each="corso : ${corsi}"
 						th:value="${corso.id}" th:text="${corso.nome}"></option>
 						</select>
 					</div>
 					<div>
 						<span>Insegnante: </span> 
-						<select id="insegnante" th:field="*{insegnante}" required>
+						<select class="select-form" id="insegnante" th:field="*{insegnante}" required>
 						<option th:each="insegnante : ${insegnanti}"
-						th:value="${insegnante.id}" th:text="${insegnante.nome} +  ' ' + ${insegnante.cognome}"></option>
+						th:value="${insegnante.id}" th:text="${insegnante.nome} +  ' ' + ${insegnante.cognome} + ' '+ '-' + ' ' + (${insegnante.corso.nome})"")" ></option>
 						</select>
 					</div>
-					<!-- 	<div>
-						<label for="corsi">scegli un corso:</label> <select id="corsi"
-							name="corsi">
-							<option value="volvo">Volvo</option>
-							<option value="saab">Saab</option>
-							<option value="fiat">Fiat</option>
-							<option value="audi">Audi</option>
-						</select>
-					</div> -->
 					<div>
-						<span><button type="submit">Invio</button></span>
+						<span><button class="button-form" type="submit">Invio</button></span>
 					</div>
 				</div>
 			</form>
