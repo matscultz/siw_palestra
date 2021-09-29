@@ -62,29 +62,51 @@ ul li a{
 	display: flex;
 	float: left;
 	width: 55%;
-	background-image: url(/images/SLIDE-06.jpg);
-	background-repeat: no-repeat;
-	background-size: 1100px;
+
 }
 
 .scritte {
 	display: flex;
 	margin: auto;
 	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 .left h1 {
-	color: white;
+	color: #a5c0e5;
 	text-align: center;
+	padding-bottom: 40px;
+	font-size: 50px;
+	letter-spacing: 4px;
+	text-decoration: 2px underline;
 }
 
 .left h2 {
-	color: white;
+	color: #a5c0e5;
 	text-align: center;
+	width: 50%;
 }
 
 .left p {
 	color: white;
 	text-align: center;
+}
+
+.bottone-corsi {
+	padding: 15px;
+    background: aliceblue;
+    margin-top: 20px;
+    border-radius: 3px;
+    border: 2px solid #a5c0e5;
+    text-align: center
+}
+
+.bottone-corsi a { 
+	color: #a5c0e5;
+	padding: 10px;
+}
+.scritte p { 
+	color: #a5c0e5;
 }
 
 .right{
