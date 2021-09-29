@@ -496,10 +496,47 @@ form input{
 	
 }
 
+.paginaRegistrazione {
+	height: 800px;
+	width: auto;
+	display: flex;
+	flex-direction: column;
+	margin-top: 30px;
+	text-align: center;
+}
+
+.paginaRegistrazione h1 {
+	
+}
+
+.tabella-lezioni {
+	border-collapse: collapse;
+	width: 80%;
+	margin: auto;
+}
+
+
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+
+b {
+	color: white;
+	font-weight: bold;
+	letter-spacing: 3px;
+}
+
+.table-info {
+	background-color: rgb(181, 211, 252)
+}
+
+tr:nth-child(even) {background-color: aliceblue;}
 /*  ------ */
 
 #footer {
 	padding: 5px 50px 30px;
+	box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
 	
 }
 
@@ -546,3 +583,75 @@ form input{
 	color: gray;
 }
 
+.container-oggetti {
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	
+}
+
+.oggetti-oggetto {
+	display: flex;
+	margin: 10px;
+	background-color: aliceblue;
+	height: 225px;
+	border-radius:10px;
+	width: 600px; 
+	margin: 10px;
+}
+
+.oggetto-image {
+	float: left;
+	display: flex;
+	width: 30%;
+	align-items: center;
+}
+
+.oggetto-image img{
+	padding: 30px;
+}
+
+.oggetto-text {
+	float: right;
+	display: flex;
+	width: 70%;
+	align-items: center;
+	flex-direction: column;
+	margin: auto;
+}
+
+.oggetto-text #titolo {
+	color: rgb(130, 164, 194);
+	letter-spacing: 4px;
+	font-size: 25px;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#titolo-link {
+	color: rgb(130, 164, 194);
+	letter-spacing: 4px;
+	font-size: 25px;
+	font-weight: bold;
+	text-decoration: 2px underline;
+}
+
+.oggetto-text #informazioni {
+	color: gray;
+}
+
+.elimina {
+	padding-top: 10px;
+}
+#elimina {
+	color: rgb(130, 164, 194);
+}
+
+.titolo-pagina {
+	color: rgb(251, 174, 88);
+	text-align: center;
+	letter-spacing: 3px;
+	font-size: 28px;
+	margin-top: 30px;
+	margin-bottom: 20px;
+}

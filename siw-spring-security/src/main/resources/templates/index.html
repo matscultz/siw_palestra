@@ -11,7 +11,7 @@
 	<!-- <header th:replace="fragments/base.html :: intestazione"></header> -->
 	<section>
 	<div class="hero">
-	 	<div th:replace="fragments/base.html :: navbar"></div>
+	 	<div th:replace="fragments/base.html :: intestazione"></div>
 	</section>
 	<section id="paginaPrincipale">
 		<div class="left">
@@ -59,45 +59,8 @@
 		</div>
 		</div>
 	</section>
-	
-	<section id="footer">
-		<div class="container-footer">
-		<div class="footer-left-col">
-			<div class="footer-links">
-				<div class="link-title">
-					<h4>Product</h4>
-					<small>Our Plan</small><br>
-					<small>Our Plan</small>
-				</div>
-				<div class="link-title">
-					<h4>About Us</h4>
-					<small>FAQs</small><br>
-					<small>Our Plan</small>
-				</div>				
-				<div class="link-title">
-					<h4>About Us</h4>
-					<small>FAQs</small><br>
-					<small>Our Plan</small>
-				</div>
-				<div class="link-title">
-					<h4>Explore</h4>
-					<small>FAQs</small><br>
-					<small>Our Plan</small>
-				</div>
-			</div>
-		</div>
-		<div class="footer-right-col">
-			<div class="footer-info">
-				<div class="copyright-text">
-					<small>support@mnc.it</small><br>
-					<small>copyright 2021 MNC</small>
-				</div>
-			</div>	
-		</div>
-		</div>
-	</section>
-    
-    <!-- <footer th:replace="fragments/base.html :: fondo(home='/')"></footer> -->
+   
+    <footer th:replace="fragments/base.html :: fondo(home='/')"></footer>
 </body>
  <script>
 	var scroll = new SmoothScroll('a[href*="#"]', {

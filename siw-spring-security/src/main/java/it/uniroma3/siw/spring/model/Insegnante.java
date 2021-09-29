@@ -3,6 +3,7 @@ package it.uniroma3.siw.spring.model;
 import java.beans.Transient;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,7 +32,7 @@ public class Insegnante {
 	@Column(nullable = false)
 	private String email;
 	
-	@OneToMany(mappedBy = "insegnante")
+	@OneToMany(mappedBy = "insegnante", cascade = CascadeType.REMOVE)
 	private List<Lezione> lezioni;
 	
 	

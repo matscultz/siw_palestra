@@ -2,25 +2,51 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/baseadmin.html :: headerfiles(title=#{header.insegnanti})"> </head>
 <body>
+	<div class="hero">
 		<div th:if="${session.role}=='ADMIN'">
 		<header th:replace="fragments/baseadmin.html :: intestazione"></header>
-	</div>
-	<div th:unless="${session.role}=='ADMIN'">
+		</div>
+		<div th:unless="${session.role}=='ADMIN'">
 		<header th:replace="fragments/base.html :: intestazione"></header>
+		</div>
 	</div>
 	<div>
-    	<h4 class="t1" >Lista di insegnanti</h4>
-		<ul>
-			<li class="t5" th:each="insegnante : ${insegnanti}">
-				<a href="insegnanti.html" 
+    	<h4 class="titolo-pagina" >I nostri insegnanti</h4>
+    <div th:if="${session.role}=='ADMIN'">
+    		<div class="container-oggetti">
+			<div class="oggetti-oggetto" th:each="insegnante : ${insegnanti}">
+				<div class="oggetto-image">
+					<img th:src="@{${insegnante.photosImagePath}}" width="120" height="168"alt="">
+				</div> 
+				<div class="oggetto-text">
+				<a id="titolo" href="insegnanti.html" 
 				   th:href="@{'/insegnante' + '/' + ${insegnante.id}}" 
 				   th:text="|${insegnante.nome} ${insegnante.cognome}|">Paolo Rossi</a>
 				   <br>
-			<div><div th:if="${session.role}=='ADMIN'">
-    		<a class="btn" th:href="@{'/admin/insegnante' + '/' + ${insegnante.id}}">elimina</a></div>
-    	  </div> 
-			</li>
+				   <p id="informazioni" th:text="|${insegnante.corso.nome}|">Corso</p>
+				   <p id="informazioni" th:text="|${insegnante.email}|">email</p>
+					<div class="elimina" th:if="${session.role}=='ADMIN'">
+    					<a id="elimina" th:href="@{'/admin/insegnante' + '/' + ${insegnante.id}}">elimina</a></div>
+    	  			</div> 
+				</div>
+			</div>
 			
-		</ul>
+		</div>
+    </div>
+    <div th:unless="${session.role}=='ADMIN'">	
+		 <div class="container-oggetti">
+    		<div class="oggetti-oggetto" th:each="insegnante : ${insegnanti}">
+    			<div class="oggetto-image">
+					<img th:src="@{${insegnante.photosImagePath}}" width="120" height="168"alt="">
+				</div>
+				<div class="oggetto-text">
+				<p id="titolo" th:text="|${insegnante.nome} ${insegnante.cognome}|">Paolo Rossi</p>
+				<br>
+				<p id="informazioni" th:text="|${insegnante.corso.nome}|">Corso</p>
+				  <p id="informazioni" th:text="|${insegnante.email}|">email</p>
+				</div>
+			</div>
+    	</div>
+	</div>
 	</div>
 </html>

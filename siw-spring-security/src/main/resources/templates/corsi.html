@@ -1,27 +1,36 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 	<head th:replace="fragments/baseadmin.html :: headerfiles(title=#{header.corsi})"> 
 	</head>
 <body>
+	<div class="hero">
 	<div th:if="${session.role}=='ADMIN'">
 		<header th:replace="fragments/baseadmin.html :: intestazione"></header>
 	</div>
 	<div th:unless="${session.role}=='ADMIN'">
 		<header th:replace="fragments/base.html :: intestazione"></header>
 	</div>
-	<div class="hero">
-    	<h4 class="t1" >Lista di corsi</h4>
-		<ul>
-			<li class="t5" th:each="corso : ${corsi}">
-				<a href="corsi.html" 
+	</div>
+	<div>
+    	<h4 class="titolo-pagina" >Lista di corsi</h4>
+		<div class="container-oggetti">
+			<div class="oggetti-oggetto" th:each="corso : ${corsi}">
+				<div class="oggetto-image">
+					<img th:src="@{${corso.photosImagePath}}" width="120" height="168"alt="">
+				</div> 
+				<div class="oggetto-text">
+				<a id="titolo-link" href="corsi.html" 
 				   th:href="@{'/corso' + '/' + ${corso.id}}" 
-				   th:text="|${corso.nome} ${corso.descrizione}|">Pilates Corso di pilates</a>
+				   th:text="|${corso.nome}|">Pilates Corso di pilates</a>
+				   <p id="informazioni" th:text="|${corso.descrizione}|">Corso</p>
 				   <br>
-				    <div><div th:if="${session.role}=='ADMIN'">
-    		<a class="btn" th:href="@{'/admin/corso' + '/' + ${corso.id}}">elimina</a></div>
-    	  </div>
-			</li>
-		</ul>
+				   <div class="elimina" th:if="${session.role}=='ADMIN'">
+    					<a id="elimina" th:href="@{'/admin/corso' + '/' + ${corso.id}}">elimina</a>
+    				</div>
+    	 		 </div>
+			</div>
+	</div>
 	</div>
 </body>
 </html>

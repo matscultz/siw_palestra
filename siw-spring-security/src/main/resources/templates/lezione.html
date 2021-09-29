@@ -2,14 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head th:replace="fragments/baseadmin.html :: headerfiles(title=#{pageTitle.lezione})"> </head>
 <body>
+	<div class="hero">
 	<div th:if="${session.role}=='ADMIN'">
 		<header th:replace="fragments/baseadmin.html :: intestazione"></header>
 	</div>
 	<div th:unless="${session.role}=='ADMIN'">
 		<header th:replace="fragments/base.html :: intestazione"></header>
 	</div>
-    
-    	<h4  class="t1"></h4>
+	</div>
+    	<h4 class="t1"></h4>
     	
     	<div class="t2" th:if="${lezione}" th:object="${lezione}">
 			<span th:text="*{durata}">qui-va-durata</span>

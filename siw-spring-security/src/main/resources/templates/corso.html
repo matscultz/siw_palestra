@@ -4,34 +4,49 @@
 	th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.corso})">
 </head>
 <body>
-			<div th:if="${session.role}=='ADMIN'">
+	<div class="hero">
+		<div th:if="${session.role}=='ADMIN'">
 		<header th:replace="fragments/baseadmin.html :: intestazione"></header>
-	</div>
+		</div>
 	<div th:unless="${session.role}=='ADMIN'">
 		<header th:replace="fragments/base.html :: intestazione"></header>
 	</div>
-	<div></div>
-	 <div>
+	</div>
+	<!-- <div>
 		<img th:src="@{${corso.photosImagePath}}" width="120" height="168"
 			alt="">
-	</div> 
+	</div> -->
 
 	<div class="t2" th:if="${corso}" th:object="${corso}">
 		<span th:text="*{nome}">qui-va-nome</span> <span
 			th:text="*{descrizione}">qui-va-cognome</span>
 
 	</div>
-	<div>
-		<li th:each="lezione : ${lezioni}"><a href="lezione.html"
-			th:href="@{'/lezione' + '/' + ${lezione.id}}"
-			th:text="${lezione.nome + lezione.durata}"> </a> <!-- <span><button type="submit">PRENOTA</button></span> -->
-			<div>
-				<br> <br>
-			</div></li>
-	</div>
 	<div th:unless="${corso}">Non esiste</div>
 	<div th:unless="${#authorization.expression('isAuthenticated()')}">
 	</div>
-
+	
+   <table border="0" class="tabella-lezioni">
+    
+    <thead class="ttop">
+        <tr class="table-info">
+            <td width="20px"><b>    LEZIONE   </b></td>
+            <td><b>DURATA (minuti)</b> </td>
+            <td><b>DATA</b> </td>
+            <td><b>ORARIO</b> </td>
+            <td><b>INSEGNANTE</b> </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="lezione, iStat : ${lezioni}" th:style="${iStat.odd}? 'font-weight: normal;'" th:href="@{'/lezione' + '/' + ${lezione.id}}">
+        
+        <td width="200px"> <a th:href="@{'/lezione' + '/' + ${lezione.id}}" th:text="${lezione.nome}"</a></td>
+        <td th:text="${lezione.durata}"></td>
+        <td width="100px" th:text="${lezione.data}"></td>
+        <td th:text="${lezione.orario}"></td>
+        <td th:text="${lezione.insegnante}"></td>
+       </tr>
+     </tbody>
+    </table>
 </body>
 </html>
