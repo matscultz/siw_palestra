@@ -16,6 +16,6 @@ public interface PrenotazioneRepository extends CrudRepository<Prenotazione, Lon
 	@Query(value="select * from prenotazione where cliente_id=?1",nativeQuery=true)
     public List<Prenotazione> findByUser(Long id);
 	
-	@Query(value="select * from prenotazione p join lezione l on p.lezione_id = l.id where cliente_id=4 and data > current_date order by data, orario ",nativeQuery=true)
+	@Query(value="select * from prenotazione p join lezione l on p.lezione_id = l.id where cliente_id=?1 and data > current_date order by data, orario ",nativeQuery=true)
     public List<Prenotazione> prenotazioniOrdinate(Long id);
 }
