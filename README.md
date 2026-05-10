@@ -12,7 +12,7 @@ Lato amministratore, il sito permette di:
 
 🔧 Tecnologie utilizzate:
 
-Backend: Java con Spring Boot (progetto strutturato con Maven)
-Frontend: HTML, CSS
+Back-end: Java - Spring Boot (progetto strutturato con Maven)
+Front-end: HTML, CSS
 Database: Postgres
 
