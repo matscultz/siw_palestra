@@ -11,8 +11,7 @@ Lato amministratore, il sito permette di:
   - Gestire il numero massimo di partecipanti per ogni corso
 
 🔧 Tecnologie utilizzate:
-
-Back-end: Java - Spring Boot (progetto strutturato con Maven)
-Front-end: HTML, CSS
-Database: Postgres
+ - Java/Spring Boot (progetto strutturato con Maven)
+ -  HTML, CSS
+ - Postgres
 
